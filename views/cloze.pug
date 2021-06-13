@@ -1,0 +1,37 @@
+#userInput.no-select
+  form
+    label#title(for='text') Cloze Test
+    textarea#text(name="text" row="4" col='50')
+  button#cloze Add Blanks
+
+#middle.no-select
+  form#choices
+    div
+      input#whWords(type='checkbox')
+      label(for="whWords") Question Words
+    div
+      input#artWords(type='checkbox')
+      label(for="artWords") Articles
+    div  
+      input#demons(type='checkbox')
+      label(for="demons") Demonstratives
+    div
+      input#beVerbs(type='checkbox')
+      label(for='beVerbs') Be-verbs
+    div
+      input#proN(type='checkbox')
+      label(for='proN') Pronouns
+    div
+      input#nth(type='checkbox')
+      label(for="nth") Every N<sup>th</sup> word
+      input#nthNumber(type='number' value='5' step='1' name="nth-number")
+    div
+      input#custom(type='checkbox')
+      label(for='custom') Make Your Own
+      input#customInput(type='text')
+    div
+      input#firstLetter(type='checkbox')
+      label(for='firstLetter') First Letter Hint?
+#results
+  div#title.no-select Output: 
+  #output
