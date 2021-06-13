@@ -1,0 +1,83 @@
+body {
+    display: flex;
+    font-size: 20px;
+    font-family: 'Arial';
+    background-color: #eeeeee;
+}
+
+#userInput {
+    margin: 15px;
+    width: 45%;
+}
+
+#results {
+    margin: 15px;
+    width: 35%;
+}
+
+#text {
+    width: 42vw;
+    height: 25vw;
+    font-size: 16px;
+}
+
+button {
+    border: none;
+    border-radius: 15px;
+    padding: 10px 24px;
+    text-decoration: none;
+    color: white;
+    margin-right: 1em;
+    font-size: 1em;
+    background-color: blue;
+}
+
+#output {
+    font-size: 16px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+#nthNumber {
+    font-size: 16px;
+    width: 32px;
+    height: 20px;
+}
+
+#middle {
+    max-width: 200px;
+}
+
+#choices {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    border: solid black 1px;
+    padding: 5px;
+    font-size: 16px;
+    background-color: #ffffff;
+}
+
+label {
+    cursor: pointer;
+    user-select: none;
+}
+
+.no-select {
+    user-select: none;
+}
+
+#title {
+    font-size: 24px;
+}
