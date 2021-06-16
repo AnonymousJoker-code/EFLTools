@@ -6,7 +6,7 @@ var pronous = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 
 var custom = [];
 var nthNum = document.getElementById('nthNumber');
 var clozeBttn = document.getElementById('cloze');
-clozeBttn.addEventListener('click', function () { return getInput(); });
+clozeBttn.addEventListener('click', function () { return getCustomInput(); });
 nthNum.addEventListener('change', function (e) { return enforceMinMax(e); });
 /*
 An apple.
@@ -25,7 +25,7 @@ That was a new book.
 These are textbooks.
 Those are not ducks.
 */
-function getInput() {
+function getCustomInput() {
     custom = document.getElementById('customInput').value.split(',');
     for (var i = 0; i < custom.length; i++) {
         custom[i] = custom[i].trim();
@@ -33,32 +33,32 @@ function getInput() {
     var inputStr = document.getElementById('text').value;
     if (inputStr == '')
         return;
-    htmlOutput(paragraphs(inputStr));
+    setOutputText(paragraphs(inputStr));
 }
-function docChk(id) {
+function isDocumentChecked(id) {
     return document.getElementById(id).checked;
+}
+function trimAndSplit(item) {
+    return item.trim().split(' ');
 }
 function paragraphs(input) {
     var paraArr = input.split('\n');
-    function shaved(i) {
-        return paraArr[i].trim().split(' ');
-    }
     for (var i = 0; i < paraArr.length; i++) {
         if (paraArr[i] != '') {
-            if (docChk('whWords'))
-                paraArr[i] = blankOut(questionWords, shaved(i));
-            if (docChk('artWords'))
-                paraArr[i] = blankOut(articles, shaved(i));
-            if (docChk('demons'))
-                paraArr[i] = blankOut(demonstratives, shaved(i));
-            if (docChk('beVerbs'))
-                paraArr[i] = blankOut(beVerbs, shaved(i));
-            if (docChk('proN'))
-                paraArr[i] = blankOut(pronous, shaved(i));
-            if (docChk('nth'))
-                paraArr[i] = everyNthWord(shaved(i));
-            if (docChk('custom'))
-                paraArr[i] = blankOut(custom, shaved(i));
+            if (isDocumentChecked('whWords'))
+                paraArr[i] = blankOut(questionWords, trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('artWords'))
+                paraArr[i] = blankOut(articles, trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('demons'))
+                paraArr[i] = blankOut(demonstratives, trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('beVerbs'))
+                paraArr[i] = blankOut(beVerbs, trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('proN'))
+                paraArr[i] = blankOut(pronous, trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('nth'))
+                paraArr[i] = everyNthWord(trimAndSplit(paraArr[i]));
+            if (isDocumentChecked('custom'))
+                paraArr[i] = blankOut(custom, trimAndSplit(paraArr[i]));
         }
     }
     return paraArr;
@@ -105,20 +105,21 @@ function enforceMinMax(e) {
     var nthNum = e.target;
     var currentVal = +nthNum.value;
     if (isNaN(currentVal))
-        nthNum.value = '1';
+        nthNum.valueAsNumber = 1;
     if (currentVal < 1)
-        nthNum.value = '1';
+        nthNum.valueAsNumber = 1;
     if (currentVal > 99)
-        nthNum.value = '99';
+        nthNum.valueAsNumber = 99;
 }
-function htmlOutput(result) {
+function setOutputText(result) {
     var output = document.getElementById('output');
-    output.innerHTML = '';
+    output.value = '';
+    var lineBreak = "\n";
     for (var i = 0; i < result.length; i++) {
         if (result[i] != '')
-            output.insertAdjacentHTML('beforeend', "<div>" + result[i] + "</div>");
+            output.value += result[i] + lineBreak;
         if (result[i] == '')
-            output.insertAdjacentHTML('beforeend', '<br>');
+            output.value += lineBreak;
     }
 }
 function toReg(str) {

@@ -1,40 +1,47 @@
-link(rel="stylesheet", href="styles.css")
-#userInput.no-select
-  form
-    label#title(for='text') Cloze Test
-    textarea#text(name="text" row="4" col='50')
-  button#cloze Add Blanks
+extends structure/__layout.pug
+block content
+  .pageTitle.no-select Cloze Test Maker
 
-#middle.no-select
-  form#choices
-    div
-      input#whWords(type='checkbox')
-      label(for="whWords") Question Words
-    div
-      input#artWords(type='checkbox')
-      label(for="artWords") Articles
-    div  
-      input#demons(type='checkbox')
-      label(for="demons") Demonstratives
-    div
-      input#beVerbs(type='checkbox')
-      label(for='beVerbs') Be-verbs
-    div
-      input#proN(type='checkbox')
-      label(for='proN') Pronouns
-    div
-      input#nth(type='checkbox')
-      label(for="nth") Every N<sup>th</sup> word
-      input#nthNumber(type='number' value='5' step='1' name="nth-number")
-    div
-      input#custom(type='checkbox')
-      label(for='custom') Make Your Own
-      input#customInput(type='text')
-    div
-      input#firstLetter(type='checkbox')
-      label(for='firstLetter') First Letter Hint?
-#results
-  div#title.no-select Output: 
-  #output
+  .everything
+    #userInput.input.no-select
+      form
+        label(for='text')#textLabel Input Text
+        textarea(name="text" col='50' row="10")#text
 
-script(src="cloze.js") 
+    #middle.mid.no-select
+      div.optionsTitle Options
+      form#choices
+        div.options
+          input(type='checkbox')#whWords
+          label(for="whWords") Question Words
+        div.options
+          input(type='checkbox')#artWords
+          label(for="artWords") Articles
+        div.options
+          input(type='checkbox')#demons
+          label(for="demons") Demonstratives
+        div.options
+          input(type='checkbox')#beVerbs
+          label(for='beVerbs') Be-verbs
+        div.options
+          input(type='checkbox')#proN
+          label(for='proN') Pronouns
+        div.options
+          input(type='checkbox')#nth
+          label(for="nth") Every N<sup>th</sup> word
+          input.nthBox#nthNumber(type='number' value='5' step='1' name="nth-number")
+        div.options
+          input(type='checkbox')#custom
+          label(for='custom') Make Your Own
+          input(type='text')#customInput
+        div.options
+          input(type='checkbox')#firstLetter
+          label(for='firstLetter') First Letter Hint?
+      button#cloze Add Blanks
+
+    #results.input
+      form.outputSide
+        lable(for="output")#title.no-select.outputTitle Output Text 
+        textarea(name="output", cols="50", rows="10" readonly)#output.output
+
+  script(src="cloze.js") 

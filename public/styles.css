@@ -1,83 +1,248 @@
+:root {
+	--maincolor: #333;
+	--hover: #444;
+	--active: #222;
+	--gray: #e1e8f0;
+	--red: #e62739;
+	--purple: #9068be;
+	--blue: #6ed3cf;
+}
+
+
 body {
-    display: flex;
-    font-size: 20px;
-    font-family: 'Arial';
-    background-color: #eeeeee;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	font-family: 'Arial';
+	background: var(--gray);
 }
 
-#userInput {
-    margin: 15px;
-    width: 45%;
-}
-
-#results {
-    margin: 15px;
-    width: 35%;
-}
-
-#text {
-    width: 42vw;
-    height: 25vw;
-    font-size: 16px;
-}
-
-button {
-    border: none;
-    border-radius: 15px;
-    padding: 10px 24px;
-    text-decoration: none;
-    color: white;
-    margin-right: 1em;
-    font-size: 1em;
-    background-color: blue;
-}
-
-#output {
-    font-size: 16px;
-}
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
+
 
 /* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
-}
-
-#nthNumber {
-    font-size: 16px;
-    width: 32px;
-    height: 20px;
-}
-
-#middle {
-    max-width: 200px;
-}
-
-#choices {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    border: solid black 1px;
-    padding: 5px;
-    font-size: 16px;
-    background-color: #ffffff;
+	-moz-appearance: textfield;
 }
 
 label {
-    cursor: pointer;
-    user-select: none;
+	cursor: pointer;
+	user-select: none;
 }
 
 .no-select {
-    user-select: none;
+	user-select: none;
 }
 
-#title {
-    font-size: 24px;
+.pageTitle {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+}
+
+.everything {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+
+/* @mixin inOut($side: flex-start)
+	display: flex
+	justify-content: center
+	align-items: center
+	align-self: $side
+	width: 40%
+	height: 100%
+	background: red */
+
+.input {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	align-self: flex-start;
+	width: 40%;
+	height: 100%;
+}
+	
+/* @mixin other()
+	display: flex
+	flex-direction: column
+	align-items: center
+	width: 100%
+	height: 300px */
+	
+.input form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 400px;
+}
+
+	
+.input label {
+	font-size: 32px;
+}
+
+.input textarea {
+	outline-color: var(--blue);
+	width: 95%;
+	height: 85%;
+	resize: none;
+	font-size: 20px;
+}
+	
+.mid {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	overflow: hidden;
+	justify-content: center;
+	align-items: left;
+	background: var(--gray);
+	width: 20%;
+}
+
+.mid form {
+	border: 1px solid black;
+	background: white;
+}
+
+.optionsTitle {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 32px;
+}
+
+.nthBox {
+	width: 10%;
+	font-size: 20px;
+}
+	
+.mid button {
+    display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	border-radius: 15px;
+	padding: 10px 24px;
+	text-decoration: none;
+	color: white;
+	margin-right: 1em;
+	font-size: 1em;
+	background-color: var(--purple);
+}
+
+.outputSide {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+
+	
+.outputTitle {
+    font-size: 32px;
+}
+
+.output {
+    opacity: 1;
+}
+
+
+body {
+	background: var(--gray);
+}
+
+/* @mixin bars()
+	display: flex
+	background:  $maincolor
+	width: 100%
+	overflow: hidden
+	justify-content: flex-start
+	align-items: center
+	position: absolute
+	left: 0
+
+@mixin bars-format($fs: 1.5rem)
+	font-size: $fs
+	color: white
+	text-align: center
+	padding: 1rem 1rem
+	text-decoration: none */
+
+.navbar {
+	display: flex;
+	background:  var(--maincolor);
+	width: 100%;
+	overflow: hidden;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.navbar a {
+    font-size: 1.5rem;
+	color: white;
+	text-align: center;
+	padding: 1rem 1rem;
+	text-decoration: none;
+}
+
+.navbar a:hover {
+	background: var(--hover)
+}
+
+.navbar a:active {
+	background: var(--active);
+	opacity: 0.75;
+}
+
+.nav-link i {
+	padding-left: .25em;
+
+}
+
+.navbar a:hover i {
+	color: var(--purple);
+
+}
+
+.footer {
+	display: flex;
+	background: var(--maincolor);
+	width: 100%;
+	overflow: hidden;
+	justify-content: flex-start;
+	align-items: center;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+    justify-content: flex-end;
+}
+
+.footer div {
+    font-size: 1rem;
+	color: white;
+	text-align: center;
+	padding: 1rem 1rem;
+	text-decoration: none;
+}
+
+.footer i {
+    font-size: 1rem;
+	color: white;
+	text-align: center;
+	padding: 1rem 1rem;
+	text-decoration: none;
+    padding: 0;
 }

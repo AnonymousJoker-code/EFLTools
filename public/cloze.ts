@@ -8,7 +8,7 @@ let custom: string[] = []
 const nthNum = document.getElementById('nthNumber')
 const clozeBttn = document.getElementById('cloze')
 
-clozeBttn.addEventListener('click', () => getInput())
+clozeBttn.addEventListener('click', () => getCustomInput())
 nthNum.addEventListener('change', (e) => enforceMinMax(e))
 
 /* 
@@ -29,7 +29,7 @@ These are textbooks.
 Those are not ducks.
 */
 
-function getInput(): void {
+function getCustomInput(): void {
   custom = (<HTMLInputElement>document.getElementById('customInput')).value.split(',')
   for(let i = 0; i < custom.length; i++){
     custom[i] = custom[i].trim()
@@ -37,29 +37,29 @@ function getInput(): void {
   
   let inputStr: string = (<HTMLInputElement>document.getElementById('text')).value
   if(inputStr == '') return
-  htmlOutput(paragraphs(inputStr))
+  setOutputText(paragraphs(inputStr))
 }
 
-function docChk(id: string): boolean {
+function isDocumentChecked(id: string): boolean {
 	return (<HTMLInputElement>document.getElementById(id)).checked
+}
+
+function trimAndSplit(item: string): string[]{
+  return item.trim().split(' ')
 }
 
 function paragraphs(input: string): string[] {
   let paraArr: string[] = input.split('\n')
-	
-	function shaved(i: number): string[] {
-		return paraArr[i].trim().split(' ')
-	}
 
   for(let i = 0; i < paraArr.length; i++){
     if(paraArr[i] != ''){
-      if(docChk('whWords')) paraArr[i] = blankOut(questionWords, shaved(i))
-      if(docChk('artWords')) paraArr[i] = blankOut(articles, shaved(i))
-      if(docChk('demons')) paraArr[i] = blankOut(demonstratives, shaved(i))
-      if(docChk('beVerbs')) paraArr[i] = blankOut(beVerbs, shaved(i))
-			if(docChk('proN')) paraArr[i] = blankOut(pronous, shaved(i))
-      if(docChk('nth')) paraArr[i] = everyNthWord(shaved(i))
-      if(docChk('custom')) paraArr[i] = blankOut(custom, shaved(i))
+      if(isDocumentChecked('whWords')) paraArr[i] = blankOut(questionWords, trimAndSplit(paraArr[i]))
+      if(isDocumentChecked('artWords')) paraArr[i] = blankOut(articles, trimAndSplit(paraArr[i]))
+      if(isDocumentChecked('demons')) paraArr[i] = blankOut(demonstratives, trimAndSplit(paraArr[i]))
+      if(isDocumentChecked('beVerbs')) paraArr[i] = blankOut(beVerbs, trimAndSplit(paraArr[i]))
+			if(isDocumentChecked('proN')) paraArr[i] = blankOut(pronous, trimAndSplit(paraArr[i]))
+      if(isDocumentChecked('nth')) paraArr[i] = everyNthWord(trimAndSplit(paraArr[i]))
+      if(isDocumentChecked('custom')) paraArr[i] = blankOut(custom, trimAndSplit(paraArr[i]))
 			
     }
   }
@@ -109,17 +109,19 @@ function firstLetter(str: string, reg = /\w/gi): string {
 function enforceMinMax(e: Event): void {
   let nthNum: EventTarget = e.target
   let currentVal: number = +(<HTMLInputElement>nthNum).value
-  if(isNaN(currentVal)) (<HTMLInputElement>nthNum).value = '1'
-  if(currentVal < 1) (<HTMLInputElement>nthNum).value = '1'
-  if(currentVal > 99) (<HTMLInputElement>nthNum).value = '99'
+  if(isNaN(currentVal)) (<HTMLInputElement>nthNum).valueAsNumber = 1
+  if(currentVal < 1) (<HTMLInputElement>nthNum).valueAsNumber = 1
+  if(currentVal > 99) (<HTMLInputElement>nthNum).valueAsNumber = 99
 }
 
-function htmlOutput(result: string[]): void {
-  const output: HTMLElement = document.getElementById('output')
-  output.innerHTML = ''
+function setOutputText(result: string[]): void {
+  const output = document.getElementById('output') as HTMLTextAreaElement
+  output.value = ''
+  const lineBreak = "\n"
+
   for(let i = 0; i < result.length; i++){
-      if(result[i] != '') output.insertAdjacentHTML('beforeend', `<div>${result[i]}</div>`)
-      if(result[i] == '') output.insertAdjacentHTML('beforeend', '<br>')
+      if(result[i] != '') output.value += result[i] + lineBreak
+      if(result[i] == '') output.value += lineBreak
   }
 }
 
