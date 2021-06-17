@@ -6,8 +6,14 @@ var pronous = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 
 var custom = [];
 var nthNum = document.getElementById('nthNumber');
 var clozeBttn = document.getElementById('cloze');
+var resetButton = document.getElementById('reset');
+var copy = document.getElementById('copyToClipboard');
+var output = document.getElementById('output');
+var userInput = document.getElementById('text');
 clozeBttn.addEventListener('click', function () { return getCustomInput(); });
 nthNum.addEventListener('change', function (e) { return enforceMinMax(e); });
+resetButton.addEventListener('click', function () { return resetForms(); });
+copy.addEventListener('click', function () { return copyToClipboard(); });
 /*
 An apple.
 A cat.
@@ -30,7 +36,7 @@ function getCustomInput() {
     for (var i = 0; i < custom.length; i++) {
         custom[i] = custom[i].trim();
     }
-    var inputStr = document.getElementById('text').value;
+    var inputStr = userInput.value;
     if (inputStr == '')
         return;
     setOutputText(paragraphs(inputStr));
@@ -65,7 +71,10 @@ function paragraphs(input) {
 }
 function blankOut(arrToBlank, input) {
     var result = [];
+    console.log(input);
     for (var i = 0; i < input.length; i++) {
+        if (input[i].trim() === '')
+            continue;
         for (var j = 0; j < arrToBlank.length; j++) {
             // If firstLetter is not checked run the normal replacement
             result[i] = !document.getElementById('firstLetter').checked ?
@@ -128,3 +137,14 @@ function toReg(str) {
 function toBlank(str) {
     return str.replace(/\w/gi, '_');
 }
+function resetForms() {
+    output.value = '';
+    userInput.value = '';
+}
+function copyToClipboard() {
+    output.select();
+    document.execCommand('copy');
+}
+var howTo = "<strong>How to use this tool:</strong><br/>\n<blockquote>Enter text into the input text area.<br/>\nSelect which type of words you would like to turn into blanks.<br/>\nThen click the \u2018Add Blanks\u2019 button to turn your selected words to blanks.<br/>\n<br/>\nYou can leave the first letter of words to be blanked out by selecting the \u2018First Letter Hint\u2019 option.<br/>\nAll blanks are based on the length of the word.<br/>\nAll Keys are case-insensitive.</blockquote><br/>\n<br/>\n<strong>Keys:</strong><br/>\n<blockquote>Question words: who, whose, what, when, which, why, where, how<br/>\nArticles: a, an, the<br/>\nDemonstratives: this, that, these, those<br/>\nBe-Verbs: be, am, is, are, was, were, been, being<br/>\nPronouns: he, she, it, his, him, her, hers, I, my, me, mine, myself, you, your, yours, yourself, himself, herself, its, itself, we, us, our, ours, ourselves, yourselves, they, them, their, theirs, themselves<br/>\nCustom: Whatever you would like.</blockquote><br/>\n<br/>\n<strong>Custom Keys:</strong><br/>\n<blockquote>To create custom keys simply check the \u2018Make Your Own\u2019 box and list words in the box separated by a comma.<br/>\n\tExample:  apple, banana, peach, lemon, etc.</blockquote><br/>\n";
+var how = document.getElementById('howTo');
+how.innerHTML = howTo;

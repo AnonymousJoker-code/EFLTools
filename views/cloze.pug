@@ -38,10 +38,13 @@ block content
           input(type='checkbox')#firstLetter
           label(for='firstLetter') First Letter Hint?
       button#cloze Add Blanks
+      button#reset Reset
+      button#copyToClipboard Copy to Clipboard
 
     #results.input
       form.outputSide
         lable(for="output")#title.no-select.outputTitle Output Text 
         textarea(name="output", cols="50", rows="10" readonly)#output.output
+    #howTo
 
   script(src="cloze.js") 

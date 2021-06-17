@@ -7,9 +7,16 @@ let custom: string[] = []
 
 const nthNum = document.getElementById('nthNumber')
 const clozeBttn = document.getElementById('cloze')
+const resetButton = document.getElementById('reset')
+const copy = document.getElementById('copyToClipboard')
+const output = document.getElementById('output') as HTMLFormElement
+const userInput = (<HTMLFormElement>document.getElementById('text'))
+
 
 clozeBttn.addEventListener('click', () => getCustomInput())
 nthNum.addEventListener('change', (e) => enforceMinMax(e))
+resetButton.addEventListener('click', () => resetForms())
+copy.addEventListener('click', () => copyToClipboard())
 
 /* 
 An apple.
@@ -35,7 +42,7 @@ function getCustomInput(): void {
     custom[i] = custom[i].trim()
   }
   
-  let inputStr: string = (<HTMLInputElement>document.getElementById('text')).value
+  let inputStr: string = userInput.value
   if(inputStr == '') return
   setOutputText(paragraphs(inputStr))
 }
@@ -68,7 +75,9 @@ function paragraphs(input: string): string[] {
 
 function blankOut(arrToBlank: string[], input: string[]): string {
   let result: string[] = []
+  console.log(input)
   for(let i = 0; i < input.length; i++){
+    if(input[i].trim() === '') continue
     for(let j = 0; j < arrToBlank.length; j++){
       // If firstLetter is not checked run the normal replacement
       result[i] = !(<HTMLInputElement>document.getElementById('firstLetter')).checked ?
@@ -132,3 +141,38 @@ function toReg(str: string): RegExp {
 function toBlank(str: string): string {
   return str.replace(/\w/gi, '_')
 }
+
+function resetForms() {
+  output.value = ''
+  userInput.value = ''
+
+}
+
+function copyToClipboard() {
+	output.select()
+	document.execCommand('copy')
+}
+
+const howTo = `<strong>How to use this tool:</strong><br/>
+<blockquote>Enter text into the input text area.<br/>
+Select which type of words you would like to turn into blanks.<br/>
+Then click the ‘Add Blanks’ button to turn your selected words to blanks.<br/>
+<br/>
+You can leave the first letter of words to be blanked out by selecting the ‘First Letter Hint’ option.<br/>
+All blanks are based on the length of the word.<br/>
+All Keys are case-insensitive.</blockquote><br/>
+<br/>
+<strong>Keys:</strong><br/>
+<blockquote>Question words: who, whose, what, when, which, why, where, how<br/>
+Articles: a, an, the<br/>
+Demonstratives: this, that, these, those<br/>
+Be-Verbs: be, am, is, are, was, were, been, being<br/>
+Pronouns: he, she, it, his, him, her, hers, I, my, me, mine, myself, you, your, yours, yourself, himself, herself, its, itself, we, us, our, ours, ourselves, yourselves, they, them, their, theirs, themselves<br/>
+Custom: Whatever you would like.</blockquote><br/>
+<br/>
+<strong>Custom Keys:</strong><br/>
+<blockquote>To create custom keys simply check the ‘Make Your Own’ box and list words in the box separated by a comma.<br/>
+	Example:  apple, banana, peach, lemon, etc.</blockquote><br/>
+`
+const how = document.getElementById('howTo')
+how.innerHTML = howTo

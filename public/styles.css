@@ -143,13 +143,21 @@ label {
 	background-color: var(--purple);
 }
 
+#cloze {
+	background: var(--blue);
+	color: #000;
+}
+
+#reset {
+	background: var(--red);
+}
+
 .outputSide {
     display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 }
-
 	
 .outputTitle {
     font-size: 32px;
@@ -159,31 +167,13 @@ label {
     opacity: 1;
 }
 
-
-body {
-	background: var(--gray);
+#howTo {
+	padding-left: 24px;
 }
-
-/* @mixin bars()
-	display: flex
-	background:  $maincolor
-	width: 100%
-	overflow: hidden
-	justify-content: flex-start
-	align-items: center
-	position: absolute
-	left: 0
-
-@mixin bars-format($fs: 1.5rem)
-	font-size: $fs
-	color: white
-	text-align: center
-	padding: 1rem 1rem
-	text-decoration: none */
 
 .navbar {
 	display: flex;
-	background:  var(--maincolor);
+	background: linear-gradient(90deg, var(--maincolor), #222);
 	width: 100%;
 	overflow: hidden;
 	justify-content: flex-start;
@@ -214,7 +204,7 @@ body {
 
 .navbar a:hover i {
 	color: var(--purple);
-
+	transition: color 0.5s;
 }
 
 .footer {
@@ -224,9 +214,7 @@ body {
 	overflow: hidden;
 	justify-content: flex-start;
 	align-items: center;
-	position: absolute;
-	left: 0;
-	bottom: 0;
+	position: relative;
     justify-content: flex-end;
 }
 
