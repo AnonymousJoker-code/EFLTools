@@ -128,6 +128,10 @@ label {
 	width: 10%;
 	font-size: 20px;
 }
+
+.boxPaddingFromText {
+	padding-right: 12px;
+}
 	
 .mid button {
     display: flex;

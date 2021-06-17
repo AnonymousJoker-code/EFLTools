@@ -1,3 +1,20 @@
 extends structure/__layout.pug
 block content
-    h1 Work in Progress
+    main.no-select
+        h1 Letter Bingo
+        .no-select#toolbarLB
+            button#startLB New Game
+            button#nextLB Next Letter 
+            div 
+                input(type="radio", name="case" checked)#upperLB
+                label(for="upper") Uppercase 
+            div 
+                input(type="radio", name="case")#lowerLB
+                label(for="lower")
+            #letter-remainingLB Letters Remaining:
+            span#remainLB 26
+            #bingoLB 
+                #current-letterLB
+                #called-lettersLB
+
+    script(src="letterBingo.js") 
