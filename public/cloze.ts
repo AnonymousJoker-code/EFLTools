@@ -2,7 +2,7 @@ const articles: string[] = ['a', 'the', 'an']
 const questionWords: string[] = ['who', 'whose', 'what', 'when', 'which', 'why', 'where', 'how']
 const demonstratives: string[] = ['this', 'that', 'these', 'those']
 const beVerbs: string[] = ['is', 'was', 'are', 'were', 'am', 'be', 'been', 'being']
-const pronous: string[] = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'himself', 'herself', 'its', 'itself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves', 'they', 'them', 'their', 'theirs', 'themselfves']
+const pronouns: string[] = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'himself', 'herself', 'its', 'itself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves', 'they', 'them', 'their', 'theirs', 'themselves']
 let custom: string[] = []
 
 const nthNum = document.getElementById('nthNumber')
@@ -64,7 +64,7 @@ function paragraphs(input: string): string[] {
       if(isDocumentChecked('artWords')) paraArr[i] = blankOut(articles, trimAndSplit(paraArr[i]))
       if(isDocumentChecked('demons')) paraArr[i] = blankOut(demonstratives, trimAndSplit(paraArr[i]))
       if(isDocumentChecked('beVerbs')) paraArr[i] = blankOut(beVerbs, trimAndSplit(paraArr[i]))
-			if(isDocumentChecked('proN')) paraArr[i] = blankOut(pronous, trimAndSplit(paraArr[i]))
+			if(isDocumentChecked('proN')) paraArr[i] = blankOut(pronouns, trimAndSplit(paraArr[i]))
       if(isDocumentChecked('nth')) paraArr[i] = everyNthWord(trimAndSplit(paraArr[i]))
       if(isDocumentChecked('custom')) paraArr[i] = blankOut(custom, trimAndSplit(paraArr[i]))
 			

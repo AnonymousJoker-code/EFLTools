@@ -2,7 +2,7 @@ var articles = ['a', 'the', 'an'];
 var questionWords = ['who', 'whose', 'what', 'when', 'which', 'why', 'where', 'how'];
 var demonstratives = ['this', 'that', 'these', 'those'];
 var beVerbs = ['is', 'was', 'are', 'were', 'am', 'be', 'been', 'being'];
-var pronous = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'himself', 'herself', 'its', 'itself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves', 'they', 'them', 'their', 'theirs', 'themselfves'];
+var pronouns = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'himself', 'herself', 'its', 'itself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves', 'they', 'them', 'their', 'theirs', 'themselves'];
 var custom = [];
 var nthNum = document.getElementById('nthNumber');
 var clozeBttn = document.getElementById('cloze');
@@ -60,7 +60,7 @@ function paragraphs(input) {
             if (isDocumentChecked('beVerbs'))
                 paraArr[i] = blankOut(beVerbs, trimAndSplit(paraArr[i]));
             if (isDocumentChecked('proN'))
-                paraArr[i] = blankOut(pronous, trimAndSplit(paraArr[i]));
+                paraArr[i] = blankOut(pronouns, trimAndSplit(paraArr[i]));
             if (isDocumentChecked('nth'))
                 paraArr[i] = everyNthWord(trimAndSplit(paraArr[i]));
             if (isDocumentChecked('custom'))
