@@ -4,19 +4,17 @@
 	--active: #222;
 	--gray: #e1e8f0;
 	--red: #e62739;
-	--purple: #9068be;
-	--blue: #6ed3cf;
+	--purple: #824dbe;
+	--blue: #3545d4;
 }
-
 
 body {
 	margin: 0;
 	padding: 0;
-	font-size: 20px;
+	font-size: 24px;
 	font-family: 'Arial';
 	background: var(--gray);
 }
-
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -24,7 +22,6 @@ input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
 }
-
 
 /* Firefox */
 input[type=number] {
@@ -40,141 +37,28 @@ label {
 	user-select: none;
 }
 
-.pageTitle {
-	width: 100%;
+.displayFlexCenter {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	width: 100%;
+}
+
+.pageTitle {
+	width: 100%;
 	font-size: 48px;
 }
 
-.everything {
+.content-container {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	min-height: calc(100vh - 7rem);
 }
 
 
-/* @mixin inOut($side: flex-start)
-	display: flex
-	justify-content: center
-	align-items: center
-	align-self: $side
-	width: 40%
-	height: 100%
-	background: red */
 
-.input {
-    display: flex;
-	justify-content: center;
-	align-items: center;
-	align-self: flex-start;
-	width: 40%;
-	height: 100%;
-}
-	
-/* @mixin other()
-	display: flex
-	flex-direction: column
-	align-items: center
-	width: 100%
-	height: 300px */
-	
-.input form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-	height: 400px;
-}
-
-	
-.input label {
-	font-size: 32px;
-}
-
-.input textarea {
-	outline-color: var(--blue);
-	width: 95%;
-	height: 85%;
-	resize: none;
-	font-size: 20px;
-}
-	
-.mid {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	overflow: hidden;
-	justify-content: center;
-	align-items: left;
-	background: var(--gray);
-	width: 20%;
-}
-
-.mid form {
-	border: 1px solid black;
-	background: white;
-}
-
-.optionsTitle {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 32px;
-}
-
-.nthBox {
-	width: 10%;
-	font-size: 20px;
-}
-
-.boxPaddingFromText {
-	padding-right: 12px;
-}
-	
-.mid button {
-    display: flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	border-radius: 15px;
-	padding: 10px 24px;
-	text-decoration: none;
-	color: white;
-	margin-right: 1em;
-	font-size: 1em;
-	background-color: var(--purple);
-}
-
-#cloze {
-	background: var(--blue);
-	color: #000;
-}
-
-#reset {
-	background: var(--red);
-}
-
-.outputSide {
-    display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 100%;
-}
-	
-.outputTitle {
-    font-size: 32px;
-}
-
-.output {
-    opacity: 1;
-}
-
-#howTo {
-	padding-left: 24px;
-}
-
+/* Header and footer */
 .navbar {
 	display: flex;
 	background: linear-gradient(90deg, var(--maincolor), #222);
@@ -185,7 +69,7 @@ label {
 }
 
 .navbar a {
-    font-size: 1.5rem;
+	font-size: 1.5rem;
 	color: white;
 	text-align: center;
 	padding: 1rem 1rem;
@@ -203,7 +87,6 @@ label {
 
 .nav-link i {
 	padding-left: .25em;
-
 }
 
 .navbar a:hover i {
@@ -219,11 +102,11 @@ label {
 	justify-content: flex-start;
 	align-items: center;
 	position: relative;
-    justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 .footer div {
-    font-size: 1rem;
+	font-size: 1rem;
 	color: white;
 	text-align: center;
 	padding: 1rem 1rem;
@@ -231,10 +114,132 @@ label {
 }
 
 .footer i {
-    font-size: 1rem;
+	font-size: 1rem;
 	color: white;
 	text-align: center;
 	padding: 1rem 1rem;
 	text-decoration: none;
-    padding: 0;
+	padding: 0;
 }
+
+
+
+
+/* Landing CSS */
+#landingTitle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	font-size: 48px;
+}
+
+#landingContent {
+	font-size: 24px;
+	padding: 16px;
+}
+
+.landingPageContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+	
+
+
+/* Cloze CSS */
+.input {
+	align-self: flex-start;
+	width: 40%;
+	height: 100%;
+}
+	
+.input form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	height: 400px;
+}
+	
+.input label {
+	font-size: 32px;
+}
+
+textarea {
+	outline-color: var(--blue);
+	width: 95%;
+	height: 85%;
+	resize: none;
+	font-size: 20px;
+}
+	
+.mid {
+	flex-direction: column;
+	flex-wrap: wrap;
+	overflow: hidden;
+	align-items: left;
+	background: var(--gray);
+	width: 20%;
+}
+
+.mid form {
+	border: 1px solid black;
+	background: white;
+}
+
+.nthBox {
+	width: 10%;
+	font-size: 20px;
+}
+
+.boxPaddingFromText {
+	padding-right: 12px;
+}
+	
+.mid button {
+	border-radius: 15px;
+	padding: 10px 24px;
+	text-decoration: none;
+	color: white;
+	margin-right: 1em;
+	font-size: 1em;
+	cursor: pointer;
+	background-color: var(--purple);
+}
+
+button:hover {
+	opacity: 0.75;
+}
+
+button:active {
+	opacity: 1;
+}
+
+#cloze {
+	background: var(--blue);
+}
+
+#reset {
+	background: var(--red);
+}
+
+.outputFormContainer {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+}
+	
+.subTitle {
+    font-size: 32px;
+}
+
+#howTo {
+	padding-left: 24px;
+}
+
+
+
+/* Letter Bingo CSS */

@@ -140,7 +140,19 @@ function toBlank(str) {
 function resetForms() {
     output.value = '';
     userInput.value = '';
+    // uncheckOptions('whWords')
+    // uncheckOptions('artWords')
+    // uncheckOptions('demons')
+    // uncheckOptions('beVerbs')
+    // uncheckOptions('proN')
+    // uncheckOptions('nth')
+    // uncheckOptions('custom')
 }
+// Currently unsure if this should be implemented
+// function uncheckOptions(id: string): void {
+//   const element = <HTMLInputElement>document.getElementById(id)
+//   if(element.checked) element.checked = false
+// }
 function copyToClipboard() {
     output.select();
     document.execCommand('copy');

@@ -1,15 +1,15 @@
 extends structure/__layout.pug
 block content
-  .pageTitle.no-select Cloze Test Maker
+  .pageTitle.displayFlexCenter.no-select Cloze Test Maker
 
-  .everything
-    #userInput.input.no-select
+  .content-container
+    #userInput.input.displayFlexCenter.no-select
       form
-        label(for='text')#textLabel Input Text
+        label(for='text')#textLabel.subTitle Input Text
         textarea(name="text" col='50' row="10")#text
 
-    #middle.mid.no-select
-      div.optionsTitle Options
+    #middle.mid.displayFlexCenter.no-select
+      div.displayFlexCenter.subTitle Options
       form#choices
         div.options
           input(type='checkbox')#whWords
@@ -29,7 +29,7 @@ block content
         div.options
           input(type='checkbox')#nth
           label(for="nth").boxPaddingFromText Every N<sup>th</sup> word
-          input.nthBox#nthNumber(type='number' value='5' step='1' name="nth-number")
+          input.nthBox#nthNumber(type='number' value='5' step='1')
         div.options
           input(type='checkbox')#custom
           label(for='custom').boxPaddingFromText Make Your Own
@@ -42,9 +42,9 @@ block content
       button#copyToClipboard Copy to Clipboard
 
     #results.input
-      form.outputSide
-        lable(for="output")#title.no-select.outputTitle Output Text 
-        textarea(name="output", cols="50", rows="10" readonly)#output.output
+      form.outputFormContainer
+        label(for="output")#title.no-select.subTitle Output Text 
+        textarea(name="output", cols="50", rows="10" readonly)#output
     #howTo
 
   script(src="cloze.js") 
