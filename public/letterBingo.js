@@ -1,9 +1,14 @@
-var letterList = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
-var mixList;
-var startBttn = document.getElementById('startLB');
-var nextBttn = document.getElementById('nextLB');
-startBttn.addEventListener('click', function () { return main(); });
-nextBttn.addEventListener('click', function () { return nextLetter(); });
+var ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
+var currentAlphabetList;
+var startButton = document.getElementById('startLB');
+var nextButton = document.getElementById('nextLB');
+var currentLetter = document.getElementById('current-letterLB');
+var letterBank = document.getElementById('called-lettersLB');
+var remainingLetters = document.getElementById('remainLB');
+startButton.addEventListener('click', function () { return start(); });
+nextButton.addEventListener('click', function () { return getNextLetter(); });
+// Blank Character to make the div the correct size when "empty" janky fix TODO Fix CSS
+currentLetter.textContent = "⠀";
 function shuffle(arr) {
     var _a;
     var copyArr = arr.slice();
@@ -15,25 +20,21 @@ function shuffle(arr) {
 }
 function isUpperOrLower() {
     if (document.getElementById('upperLB').checked) {
-        mixList = shuffle(letterList).map(function (a) { return a.toUpperCase(); });
+        currentAlphabetList = shuffle(ALPHABET).map(function (a) { return a.toUpperCase(); });
     }
     else {
-        mixList = shuffle(letterList);
+        currentAlphabetList = shuffle(ALPHABET);
     }
 }
-function nextLetter() {
-    var docLeft = document.getElementById('current-letterLB');
-    var docRight = document.getElementById('called-lettersLB');
-    var remain = document.getElementById('remainLB');
-    if (mixList.length > 0) {
-        docLeft.textContent = mixList.shift();
-        docRight.textContent += docLeft.textContent + ' ';
+function getNextLetter() {
+    if (currentAlphabetList.length > 0) {
+        currentLetter.textContent = currentAlphabetList.shift();
+        letterBank.textContent += currentLetter.textContent + ' ';
     }
-    var temp = '' + mixList.length;
-    remain.textContent = temp;
+    remainingLetters.textContent = '' + currentAlphabetList.length; //casting to string
 }
-function main() {
+function start() {
     document.getElementById('called-lettersLB').textContent = '';
     isUpperOrLower();
-    nextLetter();
+    getNextLetter();
 }

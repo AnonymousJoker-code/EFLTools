@@ -4,7 +4,7 @@
 	--active: #222;
 	--gray: #e1e8f0;
 	--red: #e62739;
-	--purple: #824dbe;
+	--purple: #611fac;
 	--blue: #3545d4;
 }
 
@@ -198,7 +198,7 @@ textarea {
 	padding-right: 12px;
 }
 	
-.mid button {
+button {
 	border-radius: 15px;
 	padding: 10px 24px;
 	text-decoration: none;
@@ -211,6 +211,7 @@ textarea {
 
 button:hover {
 	opacity: 0.75;
+	cursor: pointer;
 }
 
 button:active {
@@ -243,3 +244,67 @@ button:active {
 
 
 /* Letter Bingo CSS */
+.bingoContainer {
+	flex-direction: column;
+	justify-content: unset;
+	align-items: unset;
+	align-items: center;
+	font-family: 'NHhandwriting', 'Comic Sans MS';
+	min-height: calc(100vh - 7rem);
+}
+
+.bingoTitle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--purple);
+}
+
+#toolbarLB {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	margin-bottom: 1em;
+	color: var(--purple);
+	font-size: 1.25em;
+	width: 100vw;
+}
+
+#bingoLB {
+	border: solid;
+	border-color: var(--purple);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	width: 95%;
+}
+
+#current-letterLB {
+	min-width: 70%;
+	min-height: 40%;
+	max-width: 70%;
+	max-height: 40%;
+	font-size: 25vmax;
+	color: var(--red);
+	border-right: solid;
+	border-color: var(--purple);
+	overflow-y: hidden;
+}
+
+#called-lettersLB {
+	max-width: 30%;
+	width: 30%;
+	color: var(--blue);
+	font-size: 5vmax;
+}
+
+.background-purple {
+	background: var(--purple);
+}
+
+.radioButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

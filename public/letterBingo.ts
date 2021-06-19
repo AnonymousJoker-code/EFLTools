@@ -1,11 +1,17 @@
-const letterList: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ]
-let mixList: string[]
+const ALPHABET: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ]
+let currentAlphabetList: string[]
 
-const startBttn = document.getElementById('startLB')
-const nextBttn = document.getElementById('nextLB')
+const startButton = document.getElementById('startLB')
+const nextButton = document.getElementById('nextLB')
+const currentLetter: HTMLElement = document.getElementById('current-letterLB')
+const letterBank: HTMLElement = document.getElementById('called-lettersLB')
+const remainingLetters: HTMLSpanElement = document.getElementById('remainLB')
 
-startBttn.addEventListener('click', () => main())
-nextBttn.addEventListener('click', () => nextLetter())
+startButton.addEventListener('click', () => start())
+nextButton.addEventListener('click', () => getNextLetter())
+
+// Blank Character to make the div the correct size when "empty" janky fix TODO Fix CSS
+currentLetter.textContent = "⠀"
 
 function shuffle(arr: string[]): string[]{
     const copyArr = arr.slice()
@@ -18,26 +24,22 @@ function shuffle(arr: string[]): string[]{
 
 function isUpperOrLower(): void{
     if((<HTMLInputElement>document.getElementById('upperLB')).checked){
-    mixList = shuffle(letterList).map((a) => a.toUpperCase())
+    currentAlphabetList = shuffle(ALPHABET).map((a) => a.toUpperCase())
   } else {
-    mixList = shuffle(letterList)
+    currentAlphabetList = shuffle(ALPHABET)
   }
 }
 
-function nextLetter(): void{
-  const docLeft: HTMLElement = document.getElementById('current-letterLB')
-  const docRight: HTMLElement = document.getElementById('called-lettersLB')
-  const remain: HTMLSpanElement = document.getElementById('remainLB')
-  if(mixList.length > 0){
-    docLeft.textContent = mixList.shift()
-    docRight.textContent += docLeft.textContent + ' '
+function getNextLetter(): void{
+  if(currentAlphabetList.length > 0){
+    currentLetter.textContent = currentAlphabetList.shift()
+    letterBank.textContent += currentLetter.textContent + ' '
   }
-  let temp: string = '' + mixList.length
-  remain.textContent = temp
+  remainingLetters.textContent = '' + currentAlphabetList.length //casting to string
 }
 
-function main(): void{
+function start(): void{
   document.getElementById('called-lettersLB').textContent = ''
   isUpperOrLower()
-  nextLetter()
+  getNextLetter()
 }
