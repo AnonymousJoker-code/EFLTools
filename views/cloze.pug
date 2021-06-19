@@ -11,35 +11,38 @@ block content
     #middle.mid.displayFlexCenter.no-select
       div.displayFlexCenter.subTitle Options
       form#choices
-        div.options
+        div
           input(type='checkbox')#whWords
           label(for="whWords") Question Words
-        div.options
+        div
           input(type='checkbox')#artWords
           label(for="artWords") Articles
-        div.options
+        div
           input(type='checkbox')#demons
           label(for="demons") Demonstratives
-        div.options
+        div
           input(type='checkbox')#beVerbs
           label(for='beVerbs') Be-verbs
-        div.options
+        div
           input(type='checkbox')#proN
           label(for='proN') Pronouns
-        div.options
+        div
           input(type='checkbox')#nth
           label(for="nth").boxPaddingFromText Every N<sup>th</sup> word
           input.nthBox#nthNumber(type='number' value='5' step='1')
-        div.options
+        div
           input(type='checkbox')#custom
-          label(for='custom').boxPaddingFromText Make Your Own
-          input(type='text')#customInput
-        div.options
+          label(for='custom') Make Your Own
+          .customInputWrapper
+            input(type='text')#customInput
+            label(for="customInput")
+        div
           input(type='checkbox')#firstLetter
           label(for='firstLetter') First Letter Hint?
-      button#cloze Add Blanks
-      button#reset Reset
-      button#copyToClipboard Copy to Clipboard
+      #clozeButtonWrapper
+        button#cloze Add Blanks
+        button#reset Reset
+        button#copyToClipboard Copy to Clipboard
 
     #results.input
       form.outputFormContainer

@@ -190,6 +190,7 @@ textarea {
 }
 
 .nthBox {
+	text-align: center;
 	width: 10%;
 	font-size: 20px;
 }
@@ -197,7 +198,29 @@ textarea {
 .boxPaddingFromText {
 	padding-right: 12px;
 }
-	
+
+.customInputWrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#customInput {
+	width: 95%;
+}
+
+#clozeButtonWrapper {
+	margin-top: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#clozeButtonWrapper button {
+	margin: 5px 0;
+}
+
 button {
 	border-radius: 15px;
 	padding: 10px 24px;
