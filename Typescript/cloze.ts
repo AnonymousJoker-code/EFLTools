@@ -75,7 +75,6 @@ function paragraphs(input: string): string[] {
 
 function blankOut(arrToBlank: string[], input: string[]): string {
   let result: string[] = []
-  console.log(input)
   for(let i = 0; i < input.length; i++){
     if(input[i].trim() === '') continue
     for(let j = 0; j < arrToBlank.length; j++){
@@ -104,13 +103,17 @@ function everyNthWord(inputStr: string[]): string {
 }
 
 function firstLetter(str: string, reg = /\w/gi): string {
-  let strArr = str.split('')
+  const strArr = str.split('')
+  const letterRegex = /\w/
   // Handles the the case when the word being blanked is only a single letter.
   let i = strArr.length === 1 ? 0 : 1
 	// Testing for punctuation e.g. "I'm"
 	i = reg.test(strArr[0]) ? i : i++
 	for(i; i < strArr.length; i++){
-		strArr[i] = '_'
+    if(letterRegex.test(strArr[i])) {
+      strArr[i] = '_'
+    }
+	
 	}
   return strArr.join('')
 }

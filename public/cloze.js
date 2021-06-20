@@ -55,7 +55,6 @@ function paragraphs(input) {
 }
 function blankOut(arrToBlank, input) {
     var result = [];
-    console.log(input);
     for (var i = 0; i < input.length; i++) {
         if (input[i].trim() === '')
             continue;
@@ -83,10 +82,13 @@ function everyNthWord(inputStr) {
 function firstLetter(str, reg) {
     if (reg === void 0) { reg = /\w/gi; }
     var strArr = str.split('');
+    var letterRegex = /\w/;
     var i = strArr.length === 1 ? 0 : 1;
     i = reg.test(strArr[0]) ? i : i++;
     for (i; i < strArr.length; i++) {
-        strArr[i] = '_';
+        if (letterRegex.test(strArr[i])) {
+            strArr[i] = '_';
+        }
     }
     return strArr.join('');
 }
