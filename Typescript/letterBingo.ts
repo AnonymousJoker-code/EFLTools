@@ -6,6 +6,7 @@ const nextButton: HTMLElement = document.getElementById('nextLB')!
 const currentLetter: HTMLElement = document.getElementById('current-letterLB')!
 const letterBank: HTMLElement = document.getElementById('called-lettersLB')!
 const remainingLetters: HTMLSpanElement = document.getElementById('remainLB')!
+const upperCaseButton: HTMLElement = document.getElementById('upperLB')!
 
 startButton.addEventListener('click', () => start())
 nextButton.addEventListener('click', () => getNextLetter())
@@ -13,7 +14,7 @@ nextButton.addEventListener('click', () => getNextLetter())
 // Blank Character to make the div the correct size when "empty" janky fix TODO Fix CSS
 currentLetter.textContent = "⠀"
 
-function shuffle(arr: string[]): string[]{
+function shuffleAlphabetArray(arr: string[]): string[]{
     const copyArr: string[] = arr.slice()
     for(let i: number = copyArr.length - 1; i > 0; i--){
         const j: number = Math.floor(Math.random() * (i + 1));
@@ -23,16 +24,16 @@ function shuffle(arr: string[]): string[]{
 }
 
 function isUpperOrLower(): void{
-    if((<HTMLInputElement>document.getElementById('upperLB')).checked){
-    currentAlphabetList = shuffle(ALPHABET).map((a) => a.toUpperCase())
+    if((<HTMLInputElement>upperCaseButton).checked){
+    currentAlphabetList = shuffleAlphabetArray(ALPHABET).map((a) => a.toUpperCase())
   } else {
-    currentAlphabetList = shuffle(ALPHABET)
+    currentAlphabetList = shuffleAlphabetArray(ALPHABET)
   }
 }
 
 function getNextLetter(): void{
   if(currentAlphabetList.length > 0){
-    currentLetter.textContent = currentAlphabetList.shift()!
+    currentLetter.textContent = currentAlphabetList.pop()!
     letterBank.textContent += currentLetter.textContent + ' '
   }
   remainingLetters.textContent = currentAlphabetList.length.toString()

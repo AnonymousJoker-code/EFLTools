@@ -6,10 +6,11 @@ var nextButton = document.getElementById('nextLB');
 var currentLetter = document.getElementById('current-letterLB');
 var letterBank = document.getElementById('called-lettersLB');
 var remainingLetters = document.getElementById('remainLB');
+var upperCaseButton = document.getElementById('upperLB');
 startButton.addEventListener('click', function () { return start(); });
 nextButton.addEventListener('click', function () { return getNextLetter(); });
 currentLetter.textContent = "⠀";
-function shuffle(arr) {
+function shuffleAlphabetArray(arr) {
     var _a;
     var copyArr = arr.slice();
     for (var i = copyArr.length - 1; i > 0; i--) {
@@ -19,16 +20,16 @@ function shuffle(arr) {
     return copyArr;
 }
 function isUpperOrLower() {
-    if (document.getElementById('upperLB').checked) {
-        currentAlphabetList = shuffle(ALPHABET).map(function (a) { return a.toUpperCase(); });
+    if (upperCaseButton.checked) {
+        currentAlphabetList = shuffleAlphabetArray(ALPHABET).map(function (a) { return a.toUpperCase(); });
     }
     else {
-        currentAlphabetList = shuffle(ALPHABET);
+        currentAlphabetList = shuffleAlphabetArray(ALPHABET);
     }
 }
 function getNextLetter() {
     if (currentAlphabetList.length > 0) {
-        currentLetter.textContent = currentAlphabetList.shift();
+        currentLetter.textContent = currentAlphabetList.pop();
         letterBank.textContent += currentLetter.textContent + ' ';
     }
     remainingLetters.textContent = currentAlphabetList.length.toString();

@@ -10,7 +10,7 @@ const clozeBttn = document.getElementById('cloze')!
 const resetButton = document.getElementById('reset')!
 const copy = document.getElementById('copyToClipboard')!
 const output = document.getElementById('output') as HTMLFormElement
-const userInput = (<HTMLFormElement>document.getElementById('text'))
+const userInput = <HTMLFormElement>document.getElementById('text')
 
 
 clozeBttn.addEventListener('click', () => getCustomInput())
@@ -164,7 +164,7 @@ function copyToClipboard() {
 	document.execCommand('copy')
 }
 
-const howTo = `<strong>How to use this tool:</strong><br/>
+const howToCloze = `<strong>How to use this tool:</strong><br/>
 <blockquote>Enter text into the input text area.<br/>
 Select which type of words you would like to turn into blanks.<br/>
 Then click the ‘Add Blanks’ button to turn your selected words to blanks.<br/>
@@ -185,5 +185,5 @@ Custom: Whatever you would like.</blockquote><br/>
 <blockquote>To create custom keys simply check the ‘Make Your Own’ box and list words in the box separated by a comma.<br/>
 	Example:  apple, banana, peach, lemon, etc.</blockquote><br/>
 `
-const how = document.getElementById('howTo')!
-how.innerHTML = howTo
+const howCloze = document.getElementById('howTo')!
+howCloze.innerHTML = howToCloze

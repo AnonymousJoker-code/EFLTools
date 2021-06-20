@@ -1,0 +1,20 @@
+extends structure/__layout.pug
+block content
+    .pageTitle.displayFlexCenter.no-select Sentence Shuffle
+
+    .content-container
+        #input.textareaForm.no-select
+            form
+                label(for="userInput") Input Text
+                textarea(name="userInput", cols="30", rows="10")#userInput
+        .mid.sen-mid
+            button#shuffle.blue-btn Shuffle
+            button#reset.red-btn Reset 
+            button#copyToClipboard Copy to Clipboard
+        .textareaForm.no-select
+            form
+                label(for="output") Output Text
+                textarea(name="output", cols="30", rows="10" readonly)#output
+        #howTo.howTo
+
+    script(src="sentenceShuffle.js") 

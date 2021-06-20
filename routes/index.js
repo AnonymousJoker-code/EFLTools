@@ -9,8 +9,8 @@ router.get('/cloze', (req, res) => {
     res.render('cloze')
 })
 
-router.get('/scramble', (req, res) => {
-    res.render('scramble')
+router.get('/sentenceShuffle', (req, res) => {
+    res.render('sentenceShuffle')
 })
 
 router.get('/letterBingo', (req, res) => {

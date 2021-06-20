@@ -3,7 +3,7 @@ block content
   .pageTitle.displayFlexCenter.no-select Cloze Test Maker
 
   .content-container
-    #userInput.input.displayFlexCenter.no-select
+    #userInput.textareaForm.displayFlexCenter.no-select
       form
         label(for='text')#textLabel.subTitle Input Text
         textarea(name="text" col='50' row="10")#text
@@ -40,14 +40,14 @@ block content
           input(type='checkbox')#firstLetter
           label(for='firstLetter') First Letter Hint?
       #clozeButtonWrapper
-        button#cloze Add Blanks
-        button#reset Reset
+        button#cloze.blue-btn Add Blanks
+        button#reset.red-btn Reset
         button#copyToClipboard Copy to Clipboard
 
-    #results.input
+    #results.textareaForm
       form.outputFormContainer
         label(for="output")#title.no-select.subTitle Output Text 
         textarea(name="output", cols="50", rows="10" readonly)#output
-    #howTo
+    #howTo.howTo
 
   script(src="cloze.js") 
