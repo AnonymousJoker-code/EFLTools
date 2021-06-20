@@ -10,5 +10,5 @@ const landingContent = `<strong>What is EFL Tools?</strong><br>
 <strong>Letter Bingo</strong><br>
 <blockquote>The letter bingo activity can be used with both upper and lowercase letters. It is recommended to use 4x4 bingo cards with this activity. The students can make their own cards and enjoy practicing letter recognition with this activity.`
 
-document.getElementById('landingTitle').innerHTML = 'Welcome to EFL Tools'
-document.getElementById('landingContent').innerHTML = landingContent
+document.getElementById('landingTitle')!.innerHTML = 'Welcome to EFL Tools'
+document.getElementById('landingContent')!.innerHTML = landingContent

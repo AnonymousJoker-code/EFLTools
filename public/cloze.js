@@ -1,3 +1,4 @@
+"use strict";
 var articles = ['a', 'the', 'an'];
 var questionWords = ['who', 'whose', 'what', 'when', 'which', 'why', 'where', 'how'];
 var demonstratives = ['this', 'that', 'these', 'those'];
@@ -14,23 +15,6 @@ clozeBttn.addEventListener('click', function () { return getCustomInput(); });
 nthNum.addEventListener('change', function (e) { return enforceMinMax(e); });
 resetButton.addEventListener('click', function () { return resetForms(); });
 copy.addEventListener('click', function () { return copyToClipboard(); });
-/*
-An apple.
-A cat.
-The dog.
-Whose bag?
-Who is he?
-What is this?
-Which is the dog?
-When is the party?
-Why did you go there?
-Where did she go last week?
-How are you?
-This is a cat.
-That was a new book.
-These are textbooks.
-Those are not ducks.
-*/
 function getCustomInput() {
     custom = document.getElementById('customInput').value.split(',');
     for (var i = 0; i < custom.length; i++) {
@@ -76,10 +60,8 @@ function blankOut(arrToBlank, input) {
         if (input[i].trim() === '')
             continue;
         for (var j = 0; j < arrToBlank.length; j++) {
-            // If firstLetter is not checked run the normal replacement
             result[i] = !document.getElementById('firstLetter').checked ?
                 input[i].replace(toReg(arrToBlank[j]), toBlank(arrToBlank[j])) :
-                // If it is checked and the current index matches what we need to blank call firstLetter.
                 toReg(arrToBlank[j]).test(input[i]) ?
                     firstLetter(input[i]) :
                     input[i];
@@ -101,9 +83,7 @@ function everyNthWord(inputStr) {
 function firstLetter(str, reg) {
     if (reg === void 0) { reg = /\w/gi; }
     var strArr = str.split('');
-    // Handles the the case when the word being blanked is only a single letter.
     var i = strArr.length === 1 ? 0 : 1;
-    // Testing for punctuation e.g. "I'm"
     i = reg.test(strArr[0]) ? i : i++;
     for (i; i < strArr.length; i++) {
         strArr[i] = '_';
@@ -140,19 +120,7 @@ function toBlank(str) {
 function resetForms() {
     output.value = '';
     userInput.value = '';
-    // uncheckOptions('whWords')
-    // uncheckOptions('artWords')
-    // uncheckOptions('demons')
-    // uncheckOptions('beVerbs')
-    // uncheckOptions('proN')
-    // uncheckOptions('nth')
-    // uncheckOptions('custom')
 }
-// Currently unsure if this should be implemented
-// function uncheckOptions(id: string): void {
-//   const element = <HTMLInputElement>document.getElementById(id)
-//   if(element.checked) element.checked = false
-// }
 function copyToClipboard() {
     output.select();
     document.execCommand('copy');

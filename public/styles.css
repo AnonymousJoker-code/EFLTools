@@ -28,6 +28,8 @@ input[type=number] {
 	-moz-appearance: textfield;
 }
 
+
+/* Globals */
 label {
 	cursor: pointer;
 	user-select: none;
@@ -54,6 +56,34 @@ label {
 	flex-direction: row;
 	flex-wrap: wrap;
 	min-height: calc(100vh - 7rem);
+}
+
+textarea {
+	outline-color: var(--blue);
+	width: 95%;
+	height: 85%;
+	resize: none;
+	font-size: 20px;
+}
+
+button {
+	border-radius: 15px;
+	padding: 10px 24px;
+	text-decoration: none;
+	color: white;
+	margin-right: 1em;
+	font-size: 1em;
+	cursor: pointer;
+	background-color: var(--purple);
+}
+
+button:hover {
+	opacity: 0.75;
+	cursor: pointer;
+}
+
+button:active {
+	opacity: 1;
 }
 
 
@@ -166,14 +196,6 @@ label {
 .input label {
 	font-size: 32px;
 }
-
-textarea {
-	outline-color: var(--blue);
-	width: 95%;
-	height: 85%;
-	resize: none;
-	font-size: 20px;
-}
 	
 .mid {
 	flex-direction: column;
@@ -219,26 +241,6 @@ textarea {
 
 #clozeButtonWrapper button {
 	margin: 5px 0;
-}
-
-button {
-	border-radius: 15px;
-	padding: 10px 24px;
-	text-decoration: none;
-	color: white;
-	margin-right: 1em;
-	font-size: 1em;
-	cursor: pointer;
-	background-color: var(--purple);
-}
-
-button:hover {
-	opacity: 0.75;
-	cursor: pointer;
-}
-
-button:active {
-	opacity: 1;
 }
 
 #cloze {

@@ -1,3 +1,4 @@
+"use strict";
 var ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
 var currentAlphabetList;
 var startButton = document.getElementById('startLB');
@@ -7,7 +8,6 @@ var letterBank = document.getElementById('called-lettersLB');
 var remainingLetters = document.getElementById('remainLB');
 startButton.addEventListener('click', function () { return start(); });
 nextButton.addEventListener('click', function () { return getNextLetter(); });
-// Blank Character to make the div the correct size when "empty" janky fix TODO Fix CSS
 currentLetter.textContent = "⠀";
 function shuffle(arr) {
     var _a;
@@ -31,10 +31,10 @@ function getNextLetter() {
         currentLetter.textContent = currentAlphabetList.shift();
         letterBank.textContent += currentLetter.textContent + ' ';
     }
-    remainingLetters.textContent = '' + currentAlphabetList.length; //casting to string
+    remainingLetters.textContent = currentAlphabetList.length.toString();
 }
 function start() {
-    document.getElementById('called-lettersLB').textContent = '';
+    letterBank.textContent = '';
     isUpperOrLower();
     getNextLetter();
 }

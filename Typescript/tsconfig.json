@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "outDir": "../public",
+        "strict": true,
+        "watch": true,
+        "lib": ["DOM", "esnext"],
+    }
+}

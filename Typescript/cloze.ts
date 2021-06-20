@@ -5,10 +5,10 @@ const beVerbs: string[] = ['is', 'was', 'are', 'were', 'am', 'be', 'been', 'bein
 const pronouns: string[] = ['he', 'she', 'it', 'his', 'him', 'her', 'hers', 'i', 'my', 'me', 'mine', 'myself', 'you', 'your', 'yours', 'yourself', 'himself', 'herself', 'its', 'itself', 'we', 'us', 'our', 'ours', 'ourselves', 'yourselves', 'they', 'them', 'their', 'theirs', 'themselves']
 let custom: string[] = []
 
-const nthNum = document.getElementById('nthNumber')
-const clozeBttn = document.getElementById('cloze')
-const resetButton = document.getElementById('reset')
-const copy = document.getElementById('copyToClipboard')
+const nthNum = document.getElementById('nthNumber')!
+const clozeBttn = document.getElementById('cloze')!
+const resetButton = document.getElementById('reset')!
+const copy = document.getElementById('copyToClipboard')!
 const output = document.getElementById('output') as HTMLFormElement
 const userInput = (<HTMLFormElement>document.getElementById('text'))
 
@@ -116,7 +116,7 @@ function firstLetter(str: string, reg = /\w/gi): string {
 }
 
 function enforceMinMax(e: Event): void {
-  let nthNum: EventTarget = e.target
+  let nthNum: EventTarget = e.target!
   let currentVal: number = +(<HTMLInputElement>nthNum).value
   if(isNaN(currentVal)) (<HTMLInputElement>nthNum).valueAsNumber = 1
   if(currentVal < 1) (<HTMLInputElement>nthNum).valueAsNumber = 1
@@ -185,5 +185,5 @@ Custom: Whatever you would like.</blockquote><br/>
 <blockquote>To create custom keys simply check the ‘Make Your Own’ box and list words in the box separated by a comma.<br/>
 	Example:  apple, banana, peach, lemon, etc.</blockquote><br/>
 `
-const how = document.getElementById('howTo')
+const how = document.getElementById('howTo')!
 how.innerHTML = howTo
