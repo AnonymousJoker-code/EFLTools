@@ -1,4 +1,8 @@
 extends structure/__layout.pug
+block head 
+    title EFLT: Letter Bingo 
+    script(src="letterBingo.js" defer)
+
 block content
     main.no-select.displayFlexCenter.bingoContainer
         div.pageTitle.bingoTitle Letter Bingo
@@ -16,5 +20,3 @@ block content
         #bingoLB 
             #current-letterLB
             #called-lettersLB
-
-    script(src="letterBingo.js") 

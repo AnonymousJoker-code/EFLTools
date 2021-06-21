@@ -1,8 +1,10 @@
 extends structure/__layout.pug
+block head 
+    title EFL Tools
+    script(src="landing.js" defer) 
+
 block content
     div.content-container
         div#landing
             div#landingTitle
             div#landingContent
-
-    script(src="landing.js") 
