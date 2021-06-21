@@ -59,10 +59,13 @@ function copyToClipboardSentence() {
 
 const howToSentence = `<strong>How to use this tool:</strong><br/>
 <blockquote>Enter text into the 'Input Text' area.<br/>
-Select which type of words you would like to turn into blanks.<br/>
 Then click the ‘Shuffle’ button to shuffle your sentences.<br/>
+<br/></blockquote>
+<strong>Example:</strong><br/>
+<blockquote>This is a sentence. <strong>==></strong> [ sentence. / This / a / is ]</blockquote>
 <br/>
-All capitalization and punctuation will still be present in the output.<br/>
+<strong>Note:</strong><br/>
+<blockquote>All capitalization and punctuation will still be present in the output.</blockquote>
 `
 
 const howSentence = document.getElementById('howTo')!
