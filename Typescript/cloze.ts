@@ -19,6 +19,7 @@ resetButton.addEventListener('click', () => resetForms())
 copy.addEventListener('click', () => copyToClipboard())
 
 /* 
+Test Case Sentences:
 An apple.
 A cat.
 The dog.
