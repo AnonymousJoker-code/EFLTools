@@ -80,7 +80,3 @@ function makeAnswerList(a, b) {
 		}
 	}
 }
-
-function log(x){
-	return console.log(x)
-}
