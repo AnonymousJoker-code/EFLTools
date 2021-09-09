@@ -1,6 +1,6 @@
-const addRowButton = document.getElementById('addRow')
-const row = document.getElementById('rowContainer')
-const matchButton = document.getElementById('matching')
+const addRowButton = document.getElementById('addRow')!
+const row = document.getElementById('rowContainer')!
+const matchButton = document.getElementById('matching')!
 
 let numberOfRows = 0
 
@@ -15,21 +15,20 @@ function addNewRow() {
 }
 
 function getInputData() {
-	let columnA = []
-	let columnB = []
+	let columnA: string[] = []
+	let columnB: string[] = []
 	for(let i = 0; i < row.children.length; i++) {
-		if(document.getElementById(`A${i}`).value != '' && document.getElementById(`B${i}`) != '') {
-			columnA.push(document.getElementById(`A${i}`).value)
-			columnB.push(document.getElementById(`B${i}`).value)
+		if((<HTMLInputElement>document.getElementById(`A${i}`)).value != '' && (<HTMLInputElement>document.getElementById(`B${i}`)).value != '') {
+			columnA.push((<HTMLInputElement>document.getElementById(`A${i}`)).value)
+			columnB.push((<HTMLInputElement>document.getElementById(`B${i}`)).value)
 		}
 	}
 	if(columnA[0] == undefined || columnB[0] == undefined) return
 	
-	columnA = shuffle(make2DArray(columnA))
-	columnB = shuffle(make2DArray(columnB))
+	columnA = shuffle(columnA) // make2DArray(columnA)
+	columnB = shuffle(columnB) // make2DArray(columnB)
 	
 	buildList(columnA, columnB)
-	
 }
 
 function shuffle(arr: string[]): string[]{
@@ -41,42 +40,41 @@ function shuffle(arr: string[]): string[]{
   return copyArr
 }
 
-function make2DArray(arr: string[]): string[][]{
-	let newArray = [[]]
+// function make2DArray(arr: string[]): string[][]{
+// 	let newArray: string[][] = [[]]
 	
-	for(let i = 0; i < arr.length; i++){
-		newArray[i] = [arr[i], i]
-	}
-	return newArray
-}
+// 	for(let i = 0; i < arr.length; i++){
+// 		newArray[i] = [arr[i], `${i}`]
+// 	}
+// 	return newArray
+// }
 
 
-function buildList(a, b) {
-	const numList = document.getElementById('numberedList')
+function buildList(a: string[], b: string[]): void {
+	const numList = document.getElementById('numberedList')!
 	numList.innerHTML = ''
 	for(let i = 0; i < a.length; i++) {
-		let text = `<li>${a[i][0]}</li>`
+		let text = `<li>${a[i]}</li>`
 		numList.insertAdjacentHTML('beforeend', text)
 	}
 	
-	const letterList = document.getElementById('letteredList')
+	const letterList = document.getElementById('letteredList')!
 	letterList.innerHTML = ''
 	for(let i = 0; i < a.length; i++) {
-		let text = `<li>${b[i][0]}</li>`
+		let text = `<li>${b[i]}</li>`
 		letterList.insertAdjacentHTML('beforeend', text)
 	}
-	
-	makeAnswerList(a, b)
+	// makeAnswerList(a, b)
 }
 
-function makeAnswerList(a, b) {
-	const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ]
+// function makeAnswerList(a, b) {
+// 	const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ]
 	
-	for(let i = 0; i < a.length; i++){
-		for(let j = 0; j < b.length; j++){
-			if(a[i][1] == b[j][1]) {
+// 	for(let i = 0; i < a.length; i++){
+// 		for(let j = 0; j < b.length; j++){
+// 			if(a[i][1] == b[j][1]) {
 				
-			}
-		}
-	}
-}
+// 			}
+// 		}
+// 	}
+// }

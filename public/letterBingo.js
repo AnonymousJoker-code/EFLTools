@@ -1,27 +1,26 @@
 "use strict";
-var ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
-var currentAlphabetList;
-var startButton = document.getElementById('startLB');
-var nextButton = document.getElementById('nextLB');
-var currentLetter = document.getElementById('current-letterLB');
-var letterBank = document.getElementById('called-lettersLB');
-var remainingLetters = document.getElementById('remainLB');
-var upperCaseButton = document.getElementById('upperLB');
-startButton.addEventListener('click', function () { return start(); });
-nextButton.addEventListener('click', function () { return getNextLetter(); });
+const ALPHABET = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',];
+let currentAlphabetList;
+const startButton = document.getElementById('startLB');
+const nextButton = document.getElementById('nextLB');
+const currentLetter = document.getElementById('current-letterLB');
+const letterBank = document.getElementById('called-lettersLB');
+const remainingLetters = document.getElementById('remainLB');
+const upperCaseButton = document.getElementById('upperLB');
+startButton.addEventListener('click', () => start());
+nextButton.addEventListener('click', () => getNextLetter());
 currentLetter.textContent = "⠀";
 function shuffleAlphabetArray(arr) {
-    var _a;
-    var copyArr = arr.slice();
-    for (var i = copyArr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        _a = [copyArr[j], copyArr[i]], copyArr[i] = _a[0], copyArr[j] = _a[1];
+    const copyArr = arr.slice();
+    for (let i = copyArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copyArr[i], copyArr[j]] = [copyArr[j], copyArr[i]];
     }
     return copyArr;
 }
 function isUpperOrLower() {
     if (upperCaseButton.checked) {
-        currentAlphabetList = shuffleAlphabetArray(ALPHABET).map(function (a) { return a.toUpperCase(); });
+        currentAlphabetList = shuffleAlphabetArray(ALPHABET).map((a) => a.toUpperCase());
     }
     else {
         currentAlphabetList = shuffleAlphabetArray(ALPHABET);

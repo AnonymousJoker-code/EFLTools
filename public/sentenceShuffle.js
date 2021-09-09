@@ -1,23 +1,23 @@
 "use strict";
-var shuffleButton = document.getElementById('shuffle');
-var userInputTextArea = document.getElementById('userInput');
-var outputTextArea = document.getElementById('output');
-var resetButtonSentence = document.getElementById('reset');
-var copyButton = document.getElementById('copyToClipboard');
-shuffleButton.addEventListener('click', function () { return resetAndPrepUserInput(); });
-resetButtonSentence.addEventListener('click', function () { return resetTextArea(); });
-copyButton.addEventListener('click', function () { return copyToClipboardSentence(); });
+const shuffleButton = document.getElementById('shuffle');
+const userInputTextArea = document.getElementById('userInput');
+const outputTextArea = document.getElementById('output');
+const resetButtonSentence = document.getElementById('reset');
+const copyButton = document.getElementById('copyToClipboard');
+shuffleButton.addEventListener('click', () => resetAndPrepUserInput());
+resetButtonSentence.addEventListener('click', () => resetTextArea());
+copyButton.addEventListener('click', () => copyToClipboardSentence());
 function resetAndPrepUserInput() {
     outputTextArea.value = '';
     if (userInputTextArea.value == '')
         return;
-    var userArr = userInputTextArea.value.split('\n');
-    userArr = userArr.filter(function (a) { if (a != ' ')
+    let userArr = userInputTextArea.value.split('\n');
+    userArr = userArr.filter((a) => { if (a != ' ')
         return a; });
     splitInput(userArr);
 }
 function splitInput(inputArr) {
-    for (var i = 0; i < inputArr.length; i++) {
+    for (let i = 0; i < inputArr.length; i++) {
         if (inputArr[i] != '') {
             inputArr[i] = inputArr[i].trim();
             printShuffledString(buildOutputStr(inputArr[i]));
@@ -25,15 +25,14 @@ function splitInput(inputArr) {
     }
 }
 function buildOutputStr(inputStr) {
-    var strToShuffle = inputStr.replace(/\s+/g, ' ').split(' ');
-    return "[ " + shuffleStringArray(strToShuffle).join(' / ') + " ]";
+    let strToShuffle = inputStr.replace(/\s+/g, ' ').split(' ');
+    return `[ ${shuffleStringArray(strToShuffle).join(' / ')} ]`;
 }
 function shuffleStringArray(arr) {
-    var _a;
-    var copyArr = arr.slice();
-    for (var i = copyArr.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        _a = [copyArr[j], copyArr[i]], copyArr[i] = _a[0], copyArr[j] = _a[1];
+    const copyArr = arr.slice();
+    for (let i = copyArr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copyArr[i], copyArr[j]] = [copyArr[j], copyArr[i]];
     }
     return copyArr;
 }
@@ -48,6 +47,15 @@ function copyToClipboardSentence() {
     output.select();
     document.execCommand('copy');
 }
-var howToSentence = "<strong>How to use this tool:</strong><br/>\n<blockquote>Enter text into the 'Input Text' area.<br/>\nThen click the \u2018Shuffle\u2019 button to shuffle your sentences.<br/>\n<br/></blockquote>\n<strong>Example:</strong><br/>\n<blockquote>This is a sentence. <strong>==></strong> [ sentence. / This / a / is ]</blockquote>\n<br/>\n<strong>Note:</strong><br/>\n<blockquote>All capitalization and punctuation will still be present in the output.</blockquote>\n";
-var howSentence = document.getElementById('howTo');
+const howToSentence = `<strong>How to use this tool:</strong><br/>
+<blockquote>Enter text into the 'Input Text' area.<br/>
+Then click the ‘Shuffle’ button to shuffle your sentences.<br/>
+<br/></blockquote>
+<strong>Example:</strong><br/>
+<blockquote>This is a sentence. <strong>==></strong> [ sentence. / This / a / is ]</blockquote>
+<br/>
+<strong>Note:</strong><br/>
+<blockquote>All capitalization and punctuation will still be present in the output.</blockquote>
+`;
+const howSentence = document.getElementById('howTo');
 howSentence.innerHTML = howToSentence;

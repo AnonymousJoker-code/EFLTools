@@ -346,7 +346,7 @@ button:active {
 }
 
 /* Matching */
-.body {
+.bodyTest {
 	display: flex;
 	flex-direction: column;
 	margin: 0;

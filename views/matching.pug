@@ -1,18 +1,24 @@
-.body
-	div.buttonContainer
-		button.green#addRow Add Row
-		button#matching Match
-	div.textMatching#rowContainer
-		div.textMatching#0
-			div.sideMatching
-				label(for='A') Column A
-				input#A0(name='A')
-			div.sideMatching
-				label(for="B") Column B
-				input#B0(name='B')
-	div#resultsContainer
-		div.textMatching
-			div.sideMatching#numbered
-				ol#numberedList
-			div.sideMatching#lettered
-				ol#letteredList(type='A')
+extends structure/__layout.pug
+block head 
+	title EFLT: Matching
+	script(src="matching.js" defer)
+
+block content
+	.bodyTest
+		div.buttonContainer
+			button.green#addRow Add Row
+			button#matching Match
+		div.textMatching#rowContainer
+			div.textMatching#0
+				div.sideMatching
+					label(for='A') Column A
+					input#A0(name='A')
+				div.sideMatching
+					label(for="B") Column B
+					input#B0(name='B')
+		div#resultsContainer
+			div.textMatching
+				div.sideMatching#numbered
+					ol#numberedList
+				div.sideMatching#lettered
+					ol#letteredList(type='A')
