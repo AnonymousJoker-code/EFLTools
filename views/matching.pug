@@ -4,21 +4,22 @@ block head
 	script(src="matching.js" defer)
 
 block content
-	.bodyTest
-		div.buttonContainer
+	.content-container
+		.buttonContainer
 			button.green#addRow Add Row
 			button#matching Match
-		div.textMatching#rowContainer
-			div.textMatching#0
-				div.sideMatching
+		.textMatching#rowContainer
+			.textMatching#0
+				.sideMatching
 					label(for='A') Column A
 					input#A0(name='A')
-				div.sideMatching
+				.sideMatching
 					label(for="B") Column B
 					input#B0(name='B')
-		div#resultsContainer
-			div.textMatching
-				div.sideMatching#numbered
+		#resultsContainer
+			.textMatching
+				.sideMatching#numbered
 					ol#numberedList
-				div.sideMatching#lettered
+				.sideMatching#lettered
 					ol#letteredList(type='A')
+		#howTo.howTo
