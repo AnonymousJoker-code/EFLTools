@@ -7,14 +7,14 @@ let numberOfRows = 0
 addRowButton.addEventListener('click', () => addNewRow())
 matchButton.addEventListener('click', () => getInputData())
 
-function addNewRow() {
+function addNewRow(): void {
 	numberOfRows++
 	const newRow = `<div class="text" id="${numberOfRows}"><div class="side" id="A"><input id='A${numberOfRows}'></div><div class="side" id="B"><input id='B${numberOfRows}'></div></div>`
 	
 	row.insertAdjacentHTML('beforeend', `${newRow}`)
 }
 
-function getInputData() {
+function getInputData(): void {
 	let columnA: string[] = []
 	let columnB: string[] = []
 	for(let i = 0; i < row.children.length; i++) {
@@ -79,11 +79,11 @@ function buildList(a: string[], b: string[]): void {
 // 	}
 // }
 
-const howToSentence = `<strong>How to use this tool:</strong><br/>
+const howToMatching = `<strong>How to use this tool:</strong><br/>
 <blockquote>Enter answer pairs next to each other in columns A and B.<br/>
 Then click the ‘Add Row’ button to add another row to the columns.<br/>
 Then click the ‘Match’ button to mix your pairs to be matched.<br/>
 <br/></blockquote>`
 
-const howSentence = document.getElementById('howTo')!
-howSentence.innerHTML = howToSentence
+const howMatching = document.getElementById('howTo')!
+howMatching.innerHTML = howToMatching

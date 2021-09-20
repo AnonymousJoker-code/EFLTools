@@ -47,3 +47,10 @@ function buildList(a, b) {
         letterList.insertAdjacentHTML('beforeend', text);
     }
 }
+const howToMatching = `<strong>How to use this tool:</strong><br/>
+<blockquote>Enter answer pairs next to each other in columns A and B.<br/>
+Then click the ‘Add Row’ button to add another row to the columns.<br/>
+Then click the ‘Match’ button to mix your pairs to be matched.<br/>
+<br/></blockquote>`;
+const howMatching = document.getElementById('howTo');
+howMatching.innerHTML = howToMatching;
