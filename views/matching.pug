@@ -5,21 +5,43 @@ block head
 
 block content
 	.content-container
-		.buttonContainer
-			button.green#addRow Add Row
-			button#matching Match
-		.textMatching#rowContainer
-			.textMatching#0
-				.sideMatching
-					label(for='A') Column A
-					input#A0(name='A')
-				.sideMatching
-					label(for="B") Column B
-					input#B0(name='B')
-		#resultsContainer
-			.textMatching
-				.sideMatching#numbered
-					ol#numberedList
-				.sideMatching#lettered
-					ol#letteredList(type='A')
+		.matching-container
+			.buttonContainer
+				button.green#addRow Add Row
+				button#matching Match
+				button.red-btn#reset Reset
+			.textMatching#rowContainer
+				.textMatching#0
+					.sideMatching
+						label(for='A') Letter Column
+						input.matching-field#A0(name='A')
+					.sideMatching
+						label(for="B") Number Column
+						input.matching-field#B0(name='B')
+				.textMatching#1
+					.sideMatching
+						input.matching-field#A1
+					.sideMatching
+						input.matching-field#B1
+				.textMatching#2
+					.sideMatching
+						input.matching-field#A2
+					.sideMatching
+						input.matching-field#B2
+				.textMatching#3
+					.sideMatching
+						input.matching-field#A3
+					.sideMatching
+						input.matching-field#B3
+				.textMatching#4
+					.sideMatching
+						input.matching-field#A4
+					.sideMatching
+						input.matching-field#B4
+			#resultsContainer
+				.textMatching
+					.sideMatching#numbered
+						ol#numberedList
+					.sideMatching#lettered
+						ol#letteredList(type='A')
 		#howTo.howTo

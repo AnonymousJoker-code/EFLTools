@@ -14,6 +14,7 @@ body {
 	font-size: 24px;
 	font-family: 'Arial';
 	background: var(--gray);
+	overflow-x: hidden;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -200,7 +201,7 @@ button:active {
 	justify-content: center;
 	align-items: center;
 }
-	
+
 
 
 /* Cloze CSS */
@@ -251,14 +252,14 @@ button:active {
 }
 
 .outputFormContainer {
-    display: flex;
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
 }
-	
+
 .subTitle {
-    font-size: 32px;
+	font-size: 32px;
 }
 
 .howTo {
@@ -291,7 +292,7 @@ button:active {
 	margin-bottom: 1em;
 	color: var(--purple);
 	font-size: 1.25em;
-	width: 95vw;
+	width: 100vw;
 }
 
 #bingoLB {
@@ -333,7 +334,7 @@ button:active {
 	align-items: center;
 }
 
-/* Sentence Shuffle */
+/* Sentence Scramble */
 .sen-mid {
 	display: flex;
 	flex-direction: column;
@@ -346,20 +347,22 @@ button:active {
 }
 
 /* Matching */
-.bodyTest {
+.matching-container {
 	display: flex;
 	flex-direction: column;
-	margin: 0;
-	padding: 0;
-	width: 100vw;
-	justify-content: center;
-	align-items: center;
 }
 
 .textMatching {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	width: 100%;
+}
+
+.matching-field {
+	width: 90%;
+	height: 32px;
+	font-size: 24px;
 }
 
 #rowContainer {
@@ -372,13 +375,13 @@ button:active {
 	justify-content: center;
 	align-items: center;
 	width: 50%;
-	padding: 2%;
+	padding: 5px;
 }
 
 .buttonContainer {
 	display: flex;
 	width: 100vw;
-	height: 5em;
+	height: 4em;
 	justify-content: center;
 	align-items: center;
 	flex-direction: row;
