@@ -8,7 +8,10 @@ const landingContent = `<strong>What is EFL Tools?</strong><br>
 <blockquote>The sentence shuffle tool takes a sentences and outputs that sentence in a random order.  This is used for the students to unscramble the sentence back into the correct order. This tool can be used on a single sentence or multiple sentences at the same time. It is not recommended to us this tool with a paragraph.</blockquote>
 <br>
 <strong>Letter Bingo</strong><br>
-<blockquote>The letter bingo activity can be used with both upper and lowercase letters. It is recommended to use 4x4 bingo cards with this activity. The students can make their own cards and enjoy practicing letter recognition with this activity.`
+<blockquote>The letter bingo activity can be used with both upper and lowercase letters. It is recommended to use 4x4 bingo cards with this activity. The students can make their own cards and enjoy practicing letter recognition with this activity.</blockquote>
+<br>
+<strong>Matching</strong><br>
+<blockquote>This tool is used to quickly make matching questions. This tool takes two list that you provide it and shuffles them to make a simple number to letter matching quiz. An answer sheet is also made and provided.</blockquote>`
 
 document.getElementById('landingTitle')!.innerHTML = 'Welcome to EFL Tools'
 document.getElementById('landingContent')!.innerHTML = landingContent

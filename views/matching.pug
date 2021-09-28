@@ -4,21 +4,54 @@ block head
 	script(src="matching.js" defer)
 
 block content
-	.bodyTest
-		div.buttonContainer
-			button.green#addRow Add Row
-			button#matching Match
-		div.textMatching#rowContainer
-			div.textMatching#0
-				div.sideMatching
-					label(for='A') Column A
-					input#A0(name='A')
-				div.sideMatching
-					label(for="B") Column B
-					input#B0(name='B')
-		div#resultsContainer
-			div.textMatching
-				div.sideMatching#numbered
-					ol#numberedList
-				div.sideMatching#lettered
-					ol#letteredList(type='A')
+	.content-container
+		.matching-container
+			.buttonContainer
+				button.blue-btn#addRow Add Row
+				button#matching Match
+				button.red-btn#reset Reset
+			.textMatching#rowContainer
+				.textMatching#0
+					.sideMatching
+						label.subTitle(for='A') Number Column
+						input.matching-field#A0(name='A')
+					.sideMatching
+						label.subTitle(for="B") Letter Column
+						input.matching-field#B0(name='B')
+				.textMatching#1
+					.sideMatching
+						input.matching-field#A1
+					.sideMatching
+						input.matching-field#B1
+				.textMatching#2
+					.sideMatching
+						input.matching-field#A2
+					.sideMatching
+						input.matching-field#B2
+				.textMatching#3
+					.sideMatching
+						input.matching-field#A3
+					.sideMatching
+						input.matching-field#B3
+				.textMatching#4
+					.sideMatching
+						input.matching-field#A4
+					.sideMatching
+						input.matching-field#B4
+			.answersMatching.hidden#answerContainer
+				.answers
+					label.subTitle(for="numbers") Numbered 
+					textarea(name="numbers" readonly)#numbers.third
+				.answers
+					label.subTitle(for="letters") Lettered
+					textarea(name="letters" readonly)#letters.third
+				.answers
+					label.subTitle(for="key") Answer Key
+					textarea(name="key" readonly)#keys.third
+			#resultsContainer
+				.textMatching
+					.sideMatching#numbered
+						ol#numberedList
+					.sideMatching#lettered
+						ol#letteredList(type='A')
+		#howTo.howTo
