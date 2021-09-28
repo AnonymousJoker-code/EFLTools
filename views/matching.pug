@@ -7,16 +7,16 @@ block content
 	.content-container
 		.matching-container
 			.buttonContainer
-				button.green#addRow Add Row
+				button.blue-btn#addRow Add Row
 				button#matching Match
 				button.red-btn#reset Reset
 			.textMatching#rowContainer
 				.textMatching#0
 					.sideMatching
-						label(for='A') Letter Column
+						label.subTitle(for='A') Number Column
 						input.matching-field#A0(name='A')
 					.sideMatching
-						label(for="B") Number Column
+						label.subTitle(for="B") Letter Column
 						input.matching-field#B0(name='B')
 				.textMatching#1
 					.sideMatching
@@ -38,6 +38,16 @@ block content
 						input.matching-field#A4
 					.sideMatching
 						input.matching-field#B4
+			.answersMatching.hidden#answerContainer
+				.answers
+					label.subTitle(for="numbers") Numbered 
+					textarea(name="numbers" readonly)#numbers.third
+				.answers
+					label.subTitle(for="letters") Lettered
+					textarea(name="letters" readonly)#letters.third
+				.answers
+					label.subTitle(for="key") Answer Key
+					textarea(name="key" readonly)#keys.third
 			#resultsContainer
 				.textMatching
 					.sideMatching#numbered

@@ -1,18 +1,23 @@
 "use strict";
 const addRowButton = document.getElementById('addRow');
-const row = document.getElementById('rowContainer');
+const rowContainer = document.getElementById('rowContainer');
 const matchButton = document.getElementById('matching');
 const resetMatchingButton = document.getElementById('reset');
+const answerContainer = document.getElementById('answerContainer');
 let numberOfRows = 4;
 addRowButton.addEventListener('click', () => addNewRow());
 matchButton.addEventListener('click', () => getInputData());
 resetMatchingButton.addEventListener('click', () => reset());
 function reset() {
-    for (let i = row.children.length - 1; i > 4; i--) {
-        const id = document.getElementById(`${i}`);
+    const startingRows = 4;
+    hiddenReset();
+    let j = rowContainer.children.length - 1;
+    while (rowContainer.children.length > 5) {
+        const id = document.getElementById(`${j}`);
         id.parentNode.removeChild(id);
+        j--;
     }
-    for (let i = 0; i <= numberOfRows; i++) {
+    for (let i = 0; i < startingRows + 1; i++) {
         let a = document.getElementById(`A${i}`);
         let b = document.getElementById(`B${i}`);
         if (a.value)
@@ -21,25 +26,61 @@ function reset() {
             b.value = '';
     }
 }
+function hiddenReset() {
+    if (rowContainer.classList.contains('hidden')) {
+        rowContainer.classList.remove('hidden');
+    }
+    if (!answerContainer.classList.contains('hidden')) {
+        answerContainer.classList.add('hidden');
+    }
+}
+function hide() {
+    if (!rowContainer.classList.contains('hidden')) {
+        rowContainer.classList.add('hidden');
+    }
+    if (answerContainer.classList.contains('hidden')) {
+        answerContainer.classList.remove('hidden');
+    }
+}
 function addNewRow() {
-    numberOfRows = row.children.length || 0;
+    numberOfRows = rowContainer.children.length || 0;
     const newRow = `<div class="textMatching" id="${numberOfRows}"><div class="sideMatching" id="A"><input class="matching-field" id='A${numberOfRows}'></div><div class="sideMatching" id="B"><input class="matching-field" id='B${numberOfRows}'></div></div>`;
-    row.insertAdjacentHTML('beforeend', `${newRow}`);
+    rowContainer.insertAdjacentHTML('beforeend', `${newRow}`);
 }
 function getInputData() {
     let columnA = [];
     let columnB = [];
-    for (let i = 0; i < row.children.length; i++) {
-        if (document.getElementById(`A${i}`).value != '' && document.getElementById(`B${i}`).value != '') {
-            columnA.push(document.getElementById(`A${i}`).value);
-            columnB.push(document.getElementById(`B${i}`).value);
+    for (let i = 0; i < rowContainer.children.length; i++) {
+        let A = document.getElementById(`A${i}`);
+        let B = document.getElementById(`B${i}`);
+        if (A.value != '' && B.value != '') {
+            columnA.push(A.value);
+            columnB.push(B.value);
         }
     }
+    if (!columnA.length || !columnB.length)
+        return;
+    hide();
     const answerMap = makeAnswerKey(columnA, columnB);
     columnA = shuffle(columnA);
     columnB = shuffle(columnB);
-    let x = findAnswers(columnA, columnB, answerMap);
-    console.log(x);
+    let answerList = findAnswers(columnA, columnB, answerMap);
+    fillList(columnA, columnB, answerList);
+}
+function fillList(number, letter, answers) {
+    const letters = document.getElementById('letters');
+    const numbers = document.getElementById('numbers');
+    const keys = document.getElementById('keys');
+    letters.value = '';
+    numbers.value = '';
+    keys.value = '';
+    for (let i = 0; i < letter.length; i++) {
+        letters.value += `${String.fromCharCode(i + 65)}. ${letter[i]}\n`;
+    }
+    for (let i = 0; i < number.length; i++) {
+        numbers.value += `${i + 1}. ${number[i]}\n`;
+    }
+    keys.value = answers;
 }
 function makeAnswerKey(x, y) {
     let list = new Map();
@@ -76,7 +117,7 @@ function shuffle(arr) {
 function debug() {
     let letter = ['Banana', 'Blueberry', 'Strawberry', 'Lettuce', 'Grape', 'Orange'];
     let number = ['Yellow', 'Blue', 'Red', 'Green', 'Purple', 'Orange'];
-    let len = (letter.length > row.children.length) ? row.children.length : letter.length;
+    let len = (letter.length > rowContainer.children.length) ? rowContainer.children.length : letter.length;
     for (let i = 0; i < len; i++) {
         let a = document.getElementById(`A${i}`);
         let b = document.getElementById(`B${i}`);
@@ -86,8 +127,8 @@ function debug() {
 }
 const howToMatching = `<strong>How to use this tool:</strong><br/>
 <blockquote>Enter answer pairs next to each other in the letter and number columns.<br/>
-Then click the ‘Add Row’ button to add another row to the columns.<br/>
-Then click the ‘Match’ button to mix your pairs to be matched.<br/>
-<br/></blockquote>`;
+If you need more rows, click the ‘Add Row’ button to add another row.<br/>
+When you are ready, click the ‘Match’ button to create an shuffled matching list with an answer sheet as well.<br/>
+You can keep pressing 'Match' until the list are shuffled to your liking.<br/></blockquote>`;
 const howMatching = document.getElementById('howTo');
 howMatching.innerHTML = howToMatching;
