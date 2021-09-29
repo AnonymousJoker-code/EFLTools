@@ -410,3 +410,17 @@ textarea.third {
 .hidden {
 	display: none;
 }
+
+.stop a:hover {
+	background: #ffffff00;
+}
+
+/* Multiple Choice */
+
+.MC-container {
+	flex-direction: column;
+}
+
+.padding-5px {
+	padding: 5px;
+}
