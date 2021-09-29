@@ -8,12 +8,6 @@ MCbutton.addEventListener('click', (e) => {
 	main()
 })
 
-userInputMC.value = `Dogs, Cats, Dragons, Owls
-Apples, Oranges, Bananas, Strawberries
-Blue, Purple, Green, Brown
-Japan, The US, Germany, Korea
-English, Japanese, Math, P.E.`
-
 function main() {
 	answerListMC = []
 	userOutputMC.value = ''
