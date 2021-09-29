@@ -84,8 +84,8 @@ function blankOut(arrToBlank: string[], input: string[]): string {
         input[i].replace(toReg(arrToBlank[j]), toBlank(arrToBlank[j])) :
         // If it is checked and the current index matches what we need to blank call firstLetter.
         toReg(arrToBlank[j]).test(input[i]) ?
-           firstLetter(input[i]) :
-           input[i]
+            firstLetter(input[i]) :
+            input[i]
       if(toReg(arrToBlank[j]).test(input[i])) break
     }
   }

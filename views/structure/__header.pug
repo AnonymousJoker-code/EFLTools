@@ -2,7 +2,7 @@ script(src="https://kit.fontawesome.com/e0bda08d23.js" crossorigin="anonymous")
 script(src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit")
 script.
 	function googleTranslateElementInit() {
-		new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+		new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
 		}
 header
 	.navbar
@@ -12,8 +12,10 @@ header
 			i.fas.fa-money-check
 		a.nav-link(href="sentenceShuffle") Sentence Shuffle
 			i.fas.fa-random
+		a.nav-link(href="matching") Matching
+			i.fas.fa-list-ol
+		a.nav-link(href="multipleChoice") Multiple Choice
+			i.fas.fa-bezier-curve
 		a.nav-link(href="letterBingo") Letter Bingo
 			i.fas.fa-th
-		a.nav-link(href="matching") Matching
-			i.fas.fa-equals
-		#google_translate_element
+		#google_translate_element.stop

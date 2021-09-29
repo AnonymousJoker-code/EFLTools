@@ -1,0 +1,35 @@
+extends structure/__layout.pug
+block head  
+    title EFLT: Multiple Choice 
+    script(src="multipleChoice.js" defer) 
+
+block content
+    .pageTitle.displayFlexCenter.no-select Multiple Choice
+
+    .content-container
+        #userInput.textareaForm.displayFlexCenter.no-select
+            form
+                label(for="input")#textLabel.subTitle Input
+                textarea(name='input')#input 
+        #middle.mid.displayFlexCenter.no-select
+            div.displayFlexCenter.subTitle Options
+            form#choices.padding-5px
+                div
+                    input(type='radio' name="selector" checked value=65)#uppercase
+                    label(for="capitol") Uppercase
+                div
+                    input(type='radio' name="selector" value=97)#lowercase
+                    label(for="lowercase") Lowercase
+                div
+                    input(type='radio' name="selector" value=12354)#hiragana
+                    label(for="hiragana") Hiragana
+                div
+                    input(type='radio' name="selector" value=12450)#katakana
+                    label(for="katakana") Katakana
+            #clozeButtonWrapper
+                button(type="submit")#MCbutton.blue-btn Make Answers
+        #results.textareaForm
+            form.outputFormContainer
+                label(for="output")#title.no-select.subTitle Output 
+                textarea(name="output", cols="50", rows="10" readonly)#output
+        #howTo.howTo
