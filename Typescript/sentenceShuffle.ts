@@ -65,7 +65,8 @@ Then click the ‘Shuffle’ button to shuffle your sentences.<br/>
 <blockquote>This is a sentence. <strong>==></strong> [ sentence. / This / a / is ]</blockquote>
 <br/>
 <strong>Note:</strong><br/>
-<blockquote>All capitalization and punctuation will still be present in the output.</blockquote>
+<blockquote>All capitalization and punctuation will still be present in the output.<br/>
+If you don't want to leave in hints with punctuation or capitalization then remove that from your input.</blockquote>
 `
 
 const howSentence = document.getElementById('howTo')!

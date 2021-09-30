@@ -175,7 +175,8 @@ Then click the ‘Add Blanks’ button to turn your selected words to blanks.<br
 <br/>
 You can leave the first letter of words to be blanked out by selecting the ‘First Letter Hint’ option.<br/>
 All blanks are based on the length of the word.<br/>
-All Keys are case-insensitive.</blockquote><br/>
+All Keys are case-insensitive.<br/>
+This tool is designed around English. It may not perform well with other languages.</blockquote><br/>
 <br/>
 <strong>Keys:</strong><br/>
 <blockquote>Question words: who, whose, what, when, which, why, where, how<br/>

@@ -150,7 +150,9 @@ const howToMatching = `<strong>How to use this tool:</strong><br/>
 <blockquote>Enter answer pairs next to each other in the letter and number columns.<br/>
 If you need more rows, click the ‘Add Row’ button to add another row.<br/>
 When you are ready, click the ‘Match’ button to create an shuffled matching list with an answer sheet as well.<br/>
-You can keep pressing 'Match' until the list are shuffled to your liking.<br/></blockquote>`
+You can keep pressing 'Match' until the list are shuffled to your liking.<br/>
+The 'Reset' button will take you back to the starting inputs. Everything is deleted and reset to before any inputs.<br/>
+Please make sure that you are ready to match so you won't have to start over.</blockquote>`
 
 const howMatching = document.getElementById('howTo')!
 howMatching.innerHTML = howToMatching
