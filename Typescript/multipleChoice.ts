@@ -28,7 +28,7 @@ function getInput() {
 		
 		const correctAnswer = ans[0]
 		
-		ans = shuffle(ans)
+		ans = shuffleMC(ans)
 		userOutputMC.value += buildOutput(ans, labelType) + '\n'
 		answerListMC.push(ans.indexOf(correctAnswer))
 	}
@@ -64,7 +64,7 @@ function buildOutput(value: string[], label: number) {
 	return result.trim()
 }
 
-function shuffle(arr: string[]): string[]{
+function shuffleMC(arr: string[]): string[]{
     const copyArr = arr.slice()
     for(let i: number = copyArr.length - 1; i > 0; i--){
         const j: number = Math.floor(Math.random() * (i + 1));

@@ -24,7 +24,7 @@ function getInput() {
         if (!answers[i].includes('、') && !answers[i].includes(','))
             return;
         const correctAnswer = ans[0];
-        ans = shuffle(ans);
+        ans = shuffleMC(ans);
         userOutputMC.value += buildOutput(ans, labelType) + '\n';
         answerListMC.push(ans.indexOf(correctAnswer));
     }
@@ -60,7 +60,7 @@ function buildOutput(value, label) {
     }
     return result.trim();
 }
-function shuffle(arr) {
+function shuffleMC(arr) {
     const copyArr = arr.slice();
     for (let i = copyArr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
