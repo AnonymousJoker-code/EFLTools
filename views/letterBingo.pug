@@ -5,14 +5,14 @@ block head
 
 block content
     main.no-select.displayFlexCenter.bingoContainer
-        div.pageTitle.bingoTitle Letter Bingo
+        .pageTitle.bingoTitle Letter Bingo
         .no-select#toolbarLB
             button#startLB.background-purple New Game
             button#nextLB.background-purple Next Letter 
-            div.radioButton
+            .radioButton
                 input(type="radio", name="case" checked)#upperLB
                 label(for="upper") Uppercase 
-            div.radioButton
+            .radioButton
                 input(type="radio", name="case")#lowerLB
                 label(for="lower") Lowercase
             #letter-remainingLB Letters Remaining:

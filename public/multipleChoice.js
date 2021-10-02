@@ -102,11 +102,9 @@ function japaneseLabeling(offset, currentVal) {
 const howToMC = `<br/><br/><strong>How to use this tool:</strong><br/>
 <blockquote>Enter the option for the test in the input text box.<br/>
 Option should be separated with either a ',' or '、'.<br/>
-The first option should be the answer to the quetion as it will be used to make the answer key.<br/>
+The first option should be the answer to the question as it will be used to make the answer key.<br/>
 The number in the output is based on the line that the answers where input on.<br/>
-This tool has a maximum for upto 26 choices per input. Behavior is of this tool is undefined after that point.<br/>
 </blockquote><br/>
-<br/>
 <strong>Keys:</strong><br/>
 <blockquote>
 Uppercase: A B C D<br/>
