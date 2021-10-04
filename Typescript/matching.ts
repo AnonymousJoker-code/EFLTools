@@ -133,17 +133,17 @@ function shuffle(arr: string[]): string[]{
 	return copyArr
 }
 
-function debug(){
-	let letter = ['Banana', 'Blueberry', 'Strawberry', 'Lettuce', 'Grape', 'Orange']
-	let number = ['Yellow', 'Blue', 'Red', 'Green', 'Purple', 'Orange']
-	let len = (letter.length > rowContainer.children.length) ? rowContainer.children.length : letter.length
-	for(let i = 0; i < len; i++) {
-		let a = <HTMLInputElement>document.getElementById(`A${i}`)
-		let b = <HTMLInputElement>document.getElementById(`B${i}`)
-		a.value = letter[i]
-		b.value = number[i]
-	}
-}
+// function debug(){
+// 	let letter = ['Banana', 'Blueberry', 'Strawberry', 'Lettuce', 'Grape', 'Orange']
+// 	let number = ['Yellow', 'Blue', 'Red', 'Green', 'Purple', 'Orange']
+// 	let len = (letter.length > rowContainer.children.length) ? rowContainer.children.length : letter.length
+// 	for(let i = 0; i < len; i++) {
+// 		let a = <HTMLInputElement>document.getElementById(`A${i}`)
+// 		let b = <HTMLInputElement>document.getElementById(`B${i}`)
+// 		a.value = letter[i]
+// 		b.value = number[i]
+// 	}
+// }
 
 
 const howToMatching = `<strong>How to use this tool:</strong><br/>

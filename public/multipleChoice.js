@@ -73,7 +73,6 @@ function choiceEncoding(currentVal, offset) {
     const EnEnd = 123;
     const JpStart = 12353;
     const JpEnd = 12496;
-    console.log(offset, currentVal);
     if (typeof offset == 'string')
         offset = +offset;
     if (offset > EnStart && offset < EnEnd) {
