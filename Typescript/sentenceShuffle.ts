@@ -4,52 +4,52 @@ const outputTextArea = document.getElementById('output')! as HTMLTextAreaElement
 const resetButtonSentence: HTMLElement = document.getElementById('reset')!
 const copyButton: HTMLElement = document.getElementById('copyToClipboard')!
 
-
 shuffleButton.addEventListener('click', () => resetAndPrepUserInput())
 resetButtonSentence.addEventListener('click', () => resetTextArea())
 copyButton.addEventListener('click', () => copyToClipboardSentence())
 
 function resetAndPrepUserInput(): void {
-  outputTextArea.value = ''
+	outputTextArea.value = ''
 
-  if(userInputTextArea.value == '') return
-  let userArr: string[] = userInputTextArea.value.split('\n')
-  userArr = userArr.filter((a) => { if(a != ' ') return a })
+	if (userInputTextArea.value == '') return
+	let userArr: string[] = userInputTextArea.value.split('\n')
+	userArr = userArr.filter((a) => {
+		if (a != ' ') return a
+	})
 
-  splitInput(userArr)
+	splitInput(userArr)
 }
 
 function splitInput(inputArr: string[]) {
-
-  for(let i = 0; i < inputArr.length; i++){
-    if(inputArr[i] != ''){
-      inputArr[i] = inputArr[i].trim()
-      printShuffledString(buildOutputStr(inputArr[i]))
-    }
-  }
+	for (let i = 0; i < inputArr.length; i++) {
+		if (inputArr[i] != '') {
+			inputArr[i] = inputArr[i].trim()
+			printShuffledString(buildOutputStr(inputArr[i]))
+		}
+	}
 }
 
-function buildOutputStr(inputStr: string){
-  let strToShuffle = inputStr.replace(/\s+/g, ' ').split(' ')
-  return `[ ${shuffleStringArray(strToShuffle).join(' / ')} ]`
+function buildOutputStr(inputStr: string) {
+	let strToShuffle = inputStr.replace(/\s+/g, ' ').split(' ')
+	return `[ ${shuffleStringArray(strToShuffle).join(' / ')} ]`
 }
 
 function shuffleStringArray(arr: string[]): string[] {
-    const copyArr = arr.slice()
-    for(let i: number = copyArr.length - 1; i > 0; i--){
-        const j: number = Math.floor(Math.random() * (i + 1));
-        [copyArr[i], copyArr[j]] = [copyArr[j], copyArr[i]]
-    }
-  return copyArr
+	const copyArr = arr.slice()
+	for (let i: number = copyArr.length - 1; i > 0; i--) {
+		const j: number = Math.floor(Math.random() * (i + 1))
+		;[copyArr[i], copyArr[j]] = [copyArr[j], copyArr[i]]
+	}
+	return copyArr
 }
 
 function printShuffledString(output: string): void {
-  outputTextArea.value += output + '\n'
+	outputTextArea.value += output + '\n'
 }
 
 function resetTextArea() {
-  outputTextArea.value = ''
-  userInputTextArea.value = ''
+	outputTextArea.value = ''
+	userInputTextArea.value = ''
 }
 
 function copyToClipboardSentence() {
